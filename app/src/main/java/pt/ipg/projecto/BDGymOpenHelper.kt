@@ -4,7 +4,7 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
-private const val NOME_BASE_DADOS = "livros.db"
+private const val NOME_BASE_DADOS = "Gym.db"
 private const val VERSAO = 1
 
 class BDGymOpenHelper(
