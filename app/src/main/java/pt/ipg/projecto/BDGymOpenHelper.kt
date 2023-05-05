@@ -12,8 +12,10 @@ class BDGymOpenHelper(
     factory: SQLiteDatabase.CursorFactory?
 ) : SQLiteOpenHelper(context, NOME_BASE_DADOS, factory, VERSAO) {
 
-    override fun onCreate(p0: SQLiteDatabase?) {
-        TODO("Not yet implemented")
+    override fun onCreate(db: SQLiteDatabase?) {
+        requireNotNull(db)
+        TabelaCategorias(db).cria()
+        TabelaClientes(db).cria()
     }
 
     override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {
