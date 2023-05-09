@@ -1,5 +1,6 @@
 package pt.ipg.projecto
 
+import android.content.Context
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 
@@ -16,9 +17,18 @@ import org.junit.Assert.*
 @RunWith(AndroidJUnit4::class)
 class ExampleInstrumentedTest {
     @Test
-    fun useAppContext() {
-        // Context of the app under test.
-        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("pt.ipg.projecto", appContext.packageName)
+
+    private fun getAppContext(): Context? =
+        InstrumentationRegistry.getInstrumentation().targetContext
+
+    fun apagaBaseDados(){
+        getAppContext().deleteDatabase(BDGymOpenHelper.NOME_BASE_DADOS)
     }
+
+    fun consegueAbrirBaseDados(){
+        val openHelper = BDGymOpenHelper(getAppContext())
+        val bd = openHelper.readableDatabase
+        assert(bd.isOpen)
+    }
+
 }

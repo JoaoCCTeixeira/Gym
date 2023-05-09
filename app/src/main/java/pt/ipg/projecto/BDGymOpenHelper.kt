@@ -23,5 +23,10 @@ class BDGymOpenHelper(
             TODO("Not yet implemented")
         }
 
+
+
+    }
+    companion object {
+        const val NOME_BASE_DADOS = "Clientes.bd"
     }
 }

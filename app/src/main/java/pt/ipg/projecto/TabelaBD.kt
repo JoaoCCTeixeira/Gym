@@ -34,4 +34,6 @@ abstract class TabelaBD(val db: SQLiteDatabase, val nome: String) {
         const val CHAVE_TABELA = "${BaseColumns._ID} INTEGER PRIMARY KEY AUTOINCREMENT"
     }
 
+
+
 }
