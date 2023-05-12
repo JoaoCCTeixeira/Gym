@@ -35,7 +35,9 @@ class ExampleInstrumentedTest {
         val openHelper = BDGymOpenHelper(getAppContext())
         val bd = openHelper.writableDatabase
 
-        TabelaCategorias(bd).inser()
+        val categorias = Categoria("Drama")
+        TabelaCategorias(bd).inser(categorias.toContentValues())
+        assertNotEquals(-1, id)
     }
 
 }
