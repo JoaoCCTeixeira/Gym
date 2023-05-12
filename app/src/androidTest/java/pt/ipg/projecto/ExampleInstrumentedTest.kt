@@ -31,4 +31,11 @@ class ExampleInstrumentedTest {
         assert(bd.isOpen)
     }
 
+    fun consegueInserirCategorias(){
+        val openHelper = BDGymOpenHelper(getAppContext())
+        val bd = openHelper.writableDatabase
+
+        TabelaCategorias(bd).inser()
+    }
+
 }
