@@ -1,11 +1,13 @@
 package pt.ipg.projecto
 
 import android.content.ContentValues
+import android.database.Cursor
+import android.provider.BaseColumns
 import java.util.Calendar
 
 data class Cliente (
     var titulo: String,
-    var idCategoria: Int,
+    var idCategoria: Long,
     var isbn: String? = null,
     var dataPublicacao: Calendar? = null,
     var id: Long = -1
@@ -21,5 +23,30 @@ data class Cliente (
 
         return valores
     }
+    companion object {
+        fun fromCursor(cursor: Cursor): Cliente {
+            val posId = cursor.getColumnIndex(BaseColumns._ID)
+            val posTitulo = cursor.getColumnIndex(TabelaClientes.CAMPO_TITULO)
+            val posISBN = cursor.getColumnIndex(TabelaClientes.CAMPO_ISBN)
+            val posDataPub = cursor.getColumnIndex(TabelaClientes.CAMPO_DATA_PUB)
+            val posCategoriaFK = cursor.getColumnIndex(TabelaClientes.CAMPO_FK_CATEGORIA)
 
+            val id = cursor.getLong(posId)
+            val titulo = cursor.getString(posTitulo)
+            val isbn = cursor.getString(posISBN)
+
+            var dataPub: Calendar?
+
+            if (cursor.isNull(posDataPub)) {
+                dataPub = null
+            } else {
+                dataPub = Calendar.getInstance()
+                dataPub.timeInMillis = cursor.getLong(posDataPub)
+            }
+
+            val categoriaId = cursor.getLong(posCategoriaFK)
+
+            return Cliente(titulo, categoriaId, isbn, dataPub, id)
+        }
+    }
 }
