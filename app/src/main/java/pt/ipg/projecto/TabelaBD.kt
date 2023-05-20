@@ -27,7 +27,7 @@ abstract class TabelaBD(val db: SQLiteDatabase, val nome: String) {
 
 
 
-    fun elimine(where: String, argsWhere: Array<String>) =
+    fun elimina(where: String, argsWhere: Array<String>) =
         db.delete(nome, where, argsWhere)
 
     companion object{
