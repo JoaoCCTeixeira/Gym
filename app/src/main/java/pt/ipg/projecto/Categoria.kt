@@ -1,6 +1,8 @@
 package pt.ipg.projecto
 
 import android.content.ContentValues
+import android.database.Cursor
+import android.provider.BaseColumns
 
 data class Categoria (
     var descricao: String,
@@ -13,6 +15,17 @@ fun toContentValues(): ContentValues{
 
     valores.put(TabelaCategorias.CAMPO_DESCRICAO, descricao)
 
-    return valores
+    return valores 
 }
+    companion object {
+        fun fromCursor(cursor: Cursor) : Categoria {
+            val posId = cursor.getColumnIndex(BaseColumns._ID)
+            val posDescricao = cursor.getColumnIndex(TabelaCategorias.CAMPO_DESCRICAO)
+
+            val id = cursor.getLong(posId)
+            val descricao = cursor.getString(posDescricao)
+
+            return Categoria(descricao, id)
+        }
+    }
 }
