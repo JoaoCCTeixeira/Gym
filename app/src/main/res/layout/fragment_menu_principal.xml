@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FirstFragment">
+    tools:context=".MenuPrincipalFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
             android:id="@+id/button_sobre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sobre"
+            android:text="@string/sobre"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.501"
@@ -25,7 +25,7 @@
             android:id="@+id/button_exercicios"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="exercicios"
+            android:text="@string/pesquisa"
             app:layout_constraintBottom_toTopOf="@+id/button_personal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +35,7 @@
             android:id="@+id/button_clientes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="clientes"
+            android:text="@string/clientes"
             app:layout_constraintBottom_toTopOf="@+id/button_sobre"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.501"
@@ -45,7 +45,7 @@
             android:id="@+id/button_personal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="personal"
+            android:text="@string/personal"
             app:layout_constraintBottom_toTopOf="@+id/button_clientes"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
