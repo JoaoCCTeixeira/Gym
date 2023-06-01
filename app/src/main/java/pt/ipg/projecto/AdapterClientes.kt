@@ -52,7 +52,7 @@ class AdapterClientes(val fragment: ListaClientesFragment) : RecyclerView.Adapte
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderLivro {
         return ViewHolderLivro(
-            fragment.layoutInflater.inflate(R.layout.item_livro, parent, false)
+            fragment.layoutInflater.inflate(R.layout.item_cliente, parent, false)
         )
     }
 
