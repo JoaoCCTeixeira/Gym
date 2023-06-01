@@ -5,6 +5,7 @@ import android.content.ContentValues
 import android.content.UriMatcher
 import android.database.Cursor
 import android.net.Uri
+import android.provider.BaseColumns
 
 class ClientesContentProvider : ContentProvider() {
     private var bdOpenHelper : BDGymOpenHelper? = null
@@ -115,7 +116,29 @@ class ClientesContentProvider : ContentProvider() {
         selectionArgs: Array<out String>?,
         sortOrder: String?
     ): Cursor? {
-        TODO("Not yet implemented")
+        val bd = bdOpenHelper!!.readableDatabase
+
+        val endereco = uriMatcher().match(uri)
+        val tabela = when (endereco) {
+            URI_CATEGORIAS, URI_CATEGORIA_ID -> TabelaCategorias(bd)
+            URI_LIVROS, URI_LIVRO_ID -> TabelaClientes(bd)
+            else -> null
+        }
+
+        val id = uri.lastPathSegment
+
+        val (selecao, argsSel) = when (endereco) {
+            URI_CATEGORIA_ID, URI_LIVRO_ID -> Pair("${BaseColumns._ID}=?", arrayOf(id))
+            else -> Pair(selection, selectionArgs)
+        }
+
+        return tabela?.consulta(
+            projection as Array<String>,
+            selecao,
+            argsSel as Array<String>?,
+            null,
+            null,
+            sortOrder)
     }
 
     /**
@@ -138,7 +161,15 @@ class ClientesContentProvider : ContentProvider() {
      * @return a MIME type string, or `null` if there is no type.
      */
     override fun getType(uri: Uri): String? {
-        TODO("Not yet implemented")
+        val endereco = uriMatcher().match(uri)
+
+        return when(endereco) {
+            URI_CATEGORIAS -> "vnd.android.cursor.dir/$CATEGORIAS"
+            URI_CATEGORIA_ID -> "vnd.android.cursor.item/$CATEGORIAS"
+            URI_LIVROS -> "vnd.android.cursor.dir/$LIVROS"
+            URI_LIVRO_ID -> "vnd.android.cursor.item/$LIVROS"
+            else -> null
+        }
     }
 
     /**
@@ -154,7 +185,21 @@ class ClientesContentProvider : ContentProvider() {
      * @return The URI for the newly inserted item.
      */
     override fun insert(uri: Uri, values: ContentValues?): Uri? {
-        TODO("Not yet implemented")
+        val bd = bdOpenHelper!!.writableDatabase
+
+        val endereco = uriMatcher().match(uri)
+        val tabela = when (endereco) {
+            URI_CATEGORIAS -> TabelaCategorias(bd)
+            URI_LIVROS -> TabelaClientes(bd)
+            else -> return null
+        }
+
+        val id = tabela.inser(values!!)
+        if (id == -1L) {
+            return null
+        }
+
+        return Uri.withAppendedPath(uri, id.toString())
     }
 
     /**
@@ -181,7 +226,17 @@ class ClientesContentProvider : ContentProvider() {
      * @throws SQLException
      */
     override fun delete(uri: Uri, selection: String?, selectionArgs: Array<out String>?): Int {
-        TODO("Not yet implemented")
+        val bd = bdOpenHelper!!.writableDatabase
+
+        val endereco = uriMatcher().match(uri)
+        val tabela = when (endereco) {
+            URI_CATEGORIA_ID -> TabelaCategorias(bd)
+            URI_LIVRO_ID -> TabelaClientes(bd)
+            else -> return 0
+        }
+
+        val id = uri.lastPathSegment!!
+        return tabela.elimina("${BaseColumns._ID}=?", arrayOf(id))
     }
 
     /**
@@ -205,21 +260,40 @@ class ClientesContentProvider : ContentProvider() {
         selection: String?,
         selectionArgs: Array<out String>?
     ): Int {
-        TODO("Not yet implemented")
+        val bd = bdOpenHelper!!.writableDatabase
+
+        val endereco = uriMatcher().match(uri)
+        val tabela = when (endereco) {
+            URI_CATEGORIA_ID -> TabelaCategorias(bd)
+            URI_LIVRO_ID -> TabelaClientes(bd)
+            else -> return 0
+        }
+
+        val id = uri.lastPathSegment!!
+        return tabela.altera(values!!, "${BaseColumns._ID}=?", arrayOf(id))
     }
 
     companion object {
-        private const val AUTORIDADE = "pt.ipg.projecto"
+        private const val AUTORIDADE = "pt.ipg.livros"
 
-        const val CATEGORIAS = "categorias"
-        const val Clientes = "clientes"
+        private const val CATEGORIAS = "categorias"
+        private const val LIVROS = "livros"
 
         private const val URI_CATEGORIAS = 100
-        private const val URI_CLIENTES = 200
+        private const val URI_CATEGORIA_ID = 101
+        private const val URI_LIVROS = 200
+        private const val URI_LIVRO_ID = 201
+
+        private val ENDERECO_BASE = Uri.parse("content://$AUTORIDADE")
+
+        val ENDERECO_CATEGORIAS = Uri.withAppendedPath(ENDERECO_BASE, CATEGORIAS)
+        val ENDERECO_LIVROS = Uri.withAppendedPath(ENDERECO_BASE, LIVROS)
 
         fun uriMatcher() = UriMatcher(UriMatcher.NO_MATCH).apply {
             addURI(AUTORIDADE, CATEGORIAS, URI_CATEGORIAS)
-            addURI(AUTORIDADE, Clientes, URI_CLIENTES)
+            addURI(AUTORIDADE, "$CATEGORIAS/#", URI_CATEGORIA_ID)
+            addURI(AUTORIDADE, LIVROS, URI_LIVROS)
+            addURI(AUTORIDADE, "$LIVROS/#", URI_LIVRO_ID)
         }
     }
 }
