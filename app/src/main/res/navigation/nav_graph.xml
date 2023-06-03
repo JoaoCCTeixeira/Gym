@@ -3,26 +3,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/MenuPrincipalFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
+        android:id="@+id/MenuPrincipalFragment"
         android:name="pt.ipg.projecto.MenuPrincipalFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_menu_principal">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            app:destination="@id/SobreFragment" />
+        <action
+            android:id="@+id/action_MenuPrincipalFragment_to_listaClientesFragment22"
+            app:destination="@id/listaClientesFragment2" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
+        android:id="@+id/SobreFragment"
         android:name="pt.ipg.projecto.SobreFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_sobre">
 
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            app:destination="@id/MenuPrincipalFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listaClientesFragment2"
+        android:name="pt.ipg.projecto.ListaClientesFragment"
+        android:label="ListaClientesFragment" >
+        <action
+            android:id="@+id/action_listaClientesFragment2_to_MenuPrincipalFragment"
+            app:destination="@id/MenuPrincipalFragment" />
     </fragment>
 </navigation>
