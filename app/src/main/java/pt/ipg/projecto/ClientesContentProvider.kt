@@ -121,14 +121,14 @@ class ClientesContentProvider : ContentProvider() {
         val endereco = uriMatcher().match(uri)
         val tabela = when (endereco) {
             URI_CATEGORIAS, URI_CATEGORIA_ID -> TabelaCategorias(bd)
-            URI_LIVROS, URI_LIVRO_ID -> TabelaClientes(bd)
+            URI_CLIENTES, URI_CLIENTE_ID -> TabelaClientes(bd)
             else -> null
         }
 
         val id = uri.lastPathSegment
 
         val (selecao, argsSel) = when (endereco) {
-            URI_CATEGORIA_ID, URI_LIVRO_ID -> Pair("${BaseColumns._ID}=?", arrayOf(id))
+            URI_CATEGORIA_ID, URI_CLIENTE_ID -> Pair("${BaseColumns._ID}=?", arrayOf(id))
             else -> Pair(selection, selectionArgs)
         }
 
@@ -166,8 +166,8 @@ class ClientesContentProvider : ContentProvider() {
         return when(endereco) {
             URI_CATEGORIAS -> "vnd.android.cursor.dir/$CATEGORIAS"
             URI_CATEGORIA_ID -> "vnd.android.cursor.item/$CATEGORIAS"
-            URI_LIVROS -> "vnd.android.cursor.dir/$LIVROS"
-            URI_LIVRO_ID -> "vnd.android.cursor.item/$LIVROS"
+            URI_CLIENTES -> "vnd.android.cursor.dir/$CLIENTES"
+            URI_CLIENTE_ID -> "vnd.android.cursor.item/$CLIENTES"
             else -> null
         }
     }
@@ -190,7 +190,7 @@ class ClientesContentProvider : ContentProvider() {
         val endereco = uriMatcher().match(uri)
         val tabela = when (endereco) {
             URI_CATEGORIAS -> TabelaCategorias(bd)
-            URI_LIVROS -> TabelaClientes(bd)
+            URI_CLIENTES -> TabelaClientes(bd)
             else -> return null
         }
 
@@ -231,7 +231,7 @@ class ClientesContentProvider : ContentProvider() {
         val endereco = uriMatcher().match(uri)
         val tabela = when (endereco) {
             URI_CATEGORIA_ID -> TabelaCategorias(bd)
-            URI_LIVRO_ID -> TabelaClientes(bd)
+            URI_CLIENTE_ID -> TabelaClientes(bd)
             else -> return 0
         }
 
@@ -265,7 +265,7 @@ class ClientesContentProvider : ContentProvider() {
         val endereco = uriMatcher().match(uri)
         val tabela = when (endereco) {
             URI_CATEGORIA_ID -> TabelaCategorias(bd)
-            URI_LIVRO_ID -> TabelaClientes(bd)
+            URI_CLIENTE_ID -> TabelaClientes(bd)
             else -> return 0
         }
 
@@ -274,26 +274,26 @@ class ClientesContentProvider : ContentProvider() {
     }
 
     companion object {
-        private const val AUTORIDADE = "pt.ipg.livros"
+        private const val AUTORIDADE = "pt.ipg.procjeto"
 
         private const val CATEGORIAS = "categorias"
-        private const val LIVROS = "livros"
+        private const val CLIENTES = "clientes"
 
         private const val URI_CATEGORIAS = 100
         private const val URI_CATEGORIA_ID = 101
-        private const val URI_LIVROS = 200
-        private const val URI_LIVRO_ID = 201
+        private const val URI_CLIENTES = 200
+        private const val URI_CLIENTE_ID = 201
 
         private val ENDERECO_BASE = Uri.parse("content://$AUTORIDADE")
 
         val ENDERECO_CATEGORIAS = Uri.withAppendedPath(ENDERECO_BASE, CATEGORIAS)
-        val ENDERECO_LIVROS = Uri.withAppendedPath(ENDERECO_BASE, LIVROS)
+        val ENDERECO_CLIENTES = Uri.withAppendedPath(ENDERECO_BASE, CLIENTES)
 
         fun uriMatcher() = UriMatcher(UriMatcher.NO_MATCH).apply {
             addURI(AUTORIDADE, CATEGORIAS, URI_CATEGORIAS)
             addURI(AUTORIDADE, "$CATEGORIAS/#", URI_CATEGORIA_ID)
-            addURI(AUTORIDADE, LIVROS, URI_LIVROS)
-            addURI(AUTORIDADE, "$LIVROS/#", URI_LIVRO_ID)
+            addURI(AUTORIDADE, CLIENTES, URI_CLIENTES)
+            addURI(AUTORIDADE, "$CLIENTES/#", URI_CLIENTE_ID)
         }
     }
 }
