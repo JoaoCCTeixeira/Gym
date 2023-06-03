@@ -7,14 +7,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 
-class AdapterClientes(val fragment: ListaClientesFragment) : RecyclerView.Adapter<AdapterClientes.ViewHolderLivro>()  {
+class AdapterClientes(val fragment: ListaClientesFragment) : RecyclerView.Adapter<AdapterClientes.ViewHolderCliente>()  {
     var cursor: Cursor? = null
         set(value) {
             field = value
             notifyDataSetChanged()
         }
 
-    inner class ViewHolderLivro(contentor: View) : ViewHolder(contentor) {
+    inner class ViewHolderCliente(contentor: View) : ViewHolder(contentor) {
         private val textViewTitulo = contentor.findViewById<TextView>(R.id.textViewTitulo)
         private val textViewCategoria = contentor.findViewById<TextView>(R.id.textViewCategoria)
 
@@ -50,8 +50,8 @@ class AdapterClientes(val fragment: ListaClientesFragment) : RecyclerView.Adapte
      * @see .getItemViewType
      * @see .onBindViewHolder
      */
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderLivro {
-        return ViewHolderLivro(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderCliente {
+        return ViewHolderCliente(
             fragment.layoutInflater.inflate(R.layout.item_cliente, parent, false)
         )
     }
@@ -86,7 +86,7 @@ class AdapterClientes(val fragment: ListaClientesFragment) : RecyclerView.Adapte
      * item at the given position in the data set.
      * @param position The position of the item within the adapter's data set.
      */
-    override fun onBindViewHolder(holder: ViewHolderLivro, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolderCliente, position: Int) {
         cursor!!.moveToPosition(position)
         holder.cliente = Cliente.fromCursor(cursor!!)
     }
