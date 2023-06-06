@@ -13,4 +13,7 @@
     <string name="personal">Personal</string>
     <string name="clientes">Clientes</string>
     <string name="pesquisa">Pesquisa</string>
+    <string name="editar">Editar</string>
+    <string name="adicionar">Adicionar</string>
+    <string name="eliminar">Eliminar</string>
 </resources>
