@@ -3,14 +3,17 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/action_adicionar"
         android:icon="@android:drawable/ic_input_add"
         android:title="@string/adicionar"
         app:showAsAction="ifRoom" />
     <item
+        android:id="@+id/action_editar"
         android:icon="@android:drawable/ic_menu_edit"
         android:title="@string/editar"
         app:showAsAction="ifRoom" />
     <item
+        android:id="@+id/action_eliminar"
         android:icon="@android:drawable/ic_delete"
         android:title="@string/eliminar"
         app:showAsAction="ifRoom" />

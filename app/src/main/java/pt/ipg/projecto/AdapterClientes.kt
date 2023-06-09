@@ -18,14 +18,32 @@ class AdapterClientes(val fragment: ListaClientesFragment) : RecyclerView.Adapte
         private val textViewTitulo = contentor.findViewById<TextView>(R.id.textViewTitulo)
         private val textViewCategoria = contentor.findViewById<TextView>(R.id.textViewCategoria)
 
+        init {
+            contentor.setOnClickListener {
+                viewHolderSeleccionado?.desSeleciona()
+                seleciona()
+            }
+        }
+
         internal var cliente: Cliente? = null
             set(value) {
                 field = value
                 textViewTitulo.text = cliente?.titulo ?: ""
                 textViewCategoria.text = cliente?.idCategoria.toString() ?: ""
             }
+        fun seleciona() {
+            viewHolderSeleccionado = this
+            fragment.clienteSelecionado = cliente
+            itemView.setBackgroundResource(R.color.item_selecionado)
+        }
+
+        fun desSeleciona() {
+            itemView.setBackgroundResource(android.R.color.white)
+        }
 
     }
+
+    private var viewHolderSeleccionado : ViewHolderCliente? = null
 
     /**
      * Called when RecyclerView needs a new [ViewHolder] of the given type to represent

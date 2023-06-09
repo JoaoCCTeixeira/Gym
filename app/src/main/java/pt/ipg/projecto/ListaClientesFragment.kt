@@ -3,6 +3,7 @@ package pt.ipg.projecto
 import android.database.Cursor
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
@@ -26,6 +27,17 @@ class ListaClientesFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+
+    var clienteSelecionado : Cliente? = null
+        set(value) {
+            field = value
+
+            val mostrarEliminarAlterar = (value != null)
+
+            val activity = activity as MainActivity
+            activity.mostraOpcaoMenu(R.id.action_editar, mostrarEliminarAlterar)
+            activity.mostraOpcaoMenu(R.id.action_eliminar, mostrarEliminarAlterar)
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,6 +69,7 @@ class ListaClientesFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
         loader.initLoader(ID_LOADER_CLIENTES, null, this)
 
         val activity = activity as MainActivity
+        activity.fragment = this
         activity.idMenuAtual = R.menu.menu_lista_clientes
     }
 
@@ -139,5 +152,35 @@ class ListaClientesFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
      */
     override fun onLoaderReset(loader: Loader<Cursor>) {
         adapterClientes!!.cursor = null
+    }
+
+    fun processaOpcaoMenu(item: MenuItem) : Boolean {
+        return when (item.itemId) {
+            R.id.action_adicionar -> {
+                adicionaLivro()
+                true
+            }
+            R.id.action_editar -> {
+                editarLivro()
+                true
+            }
+            R.id.action_eliminar -> {
+                eliminarLivro()
+                true
+            }
+            else -> false
+        }
+    }
+
+    private fun eliminarLivro() {
+
+    }
+
+    private fun editarLivro() {
+
+    }
+
+    private fun adicionaLivro() {
+
     }
 }
