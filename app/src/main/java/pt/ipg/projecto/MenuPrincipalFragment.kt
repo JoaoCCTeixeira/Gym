@@ -41,7 +41,8 @@ class MenuPrincipalFragment : Fragment() {
         }
 
         val activity = activity as MainActivity
-        activity.idMenuAtual = R.menu.menu_lista_clientes
+        activity.fragment = this
+        activity.idMenuAtual = R.menu.menu_main
     }
 
     override fun onDestroyView() {

@@ -30,6 +30,7 @@ data class Cliente (
             val posISBN = cursor.getColumnIndex(TabelaClientes.CAMPO_ISBN)
             val posDataPub = cursor.getColumnIndex(TabelaClientes.CAMPO_DATA_PUB)
             val posCategoriaFK = cursor.getColumnIndex(TabelaClientes.CAMPO_FK_CATEGORIA)
+            val posDescCateg = cursor.getColumnIndex(TabelaClientes.CAMPO_DESC_CATEGORIA)
 
             val id = cursor.getLong(posId)
             val titulo = cursor.getString(posTitulo)
@@ -45,8 +46,9 @@ data class Cliente (
             }
 
             val categoriaId = cursor.getLong(posCategoriaFK)
+            val desricaoCategoria = cursor.getString(posDescCateg)
 
-            return Cliente(titulo, categoriaId, isbn, dataPub, id)
+            return Cliente(titulo, Categoria(desricaoCategoria, categoriaId), isbn, dataPub, id)
         }
     }
 }

@@ -20,7 +20,7 @@ import java.util.Calendar
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 @RunWith(AndroidJUnit4::class)
-class BDInstrumentedTest {
+class BdInstrumentedTest {
     private fun getAppContext(): Context =
         InstrumentationRegistry.getInstrumentation().targetContext
 
