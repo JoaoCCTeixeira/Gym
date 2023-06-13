@@ -18,7 +18,7 @@
                 android:id="@+id/editTextTitulo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/tituloEditra"
+                android:hint="@string/titulo"
                 android:textColorHint="#546E7A"
                 tools:ignore="VisualLintTextFieldSize" />
 
@@ -27,18 +27,16 @@
                 android:layout_height="match_parent">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextIsbn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/isbnEditar"
-                    tools:ignore="VisualLintTextFieldSize" />
+                    android:hint="@string/isbn" />
 
                 <TextView
-                    android:id="@+id/textView12"
+                    android:id="@+id/textView13"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/editarCategoria" />
+                    android:text="@string/categoria" />
 
                 <Spinner
                     android:id="@+id/spinnerCategorias"

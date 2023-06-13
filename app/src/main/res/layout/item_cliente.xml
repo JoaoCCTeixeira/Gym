@@ -6,26 +6,25 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textViewTitulo"
-        android:layout_width="wrap_content"
+        android:id="@+id/textView12"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:text="@string/p_de_laranja_lima"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:textColor="#673AB7"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Meu Pé de Laranja Lima" />
 
     <TextView
-        android:id="@+id/textViewCategoria"
-        android:layout_width="wrap_content"
+        android:id="@+id/textView14"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/literatura"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitulo"
-        app:layout_constraintVertical_bias="0.063" />
-
+        app:layout_constraintTop_toBottomOf="@+id/textView12"
+        tools:text="Literatura Infanto-juvenil" />
 </androidx.constraintlayout.widget.ConstraintLayout>

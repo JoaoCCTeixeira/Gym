@@ -1,34 +1,36 @@
 <resources>
-    <string name="app_name">Projecto</string>
+    <string name="app_name">Clientes</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">Menu Principal</string>
-    <string name="second_fragment_label">Sobre...</string>
-    <string name="next">Next</string>
+    <string name="menu_principal_label">Menu principal</string>
+    <string name="sobre_fragment_label">Sobre …</string>
     <string name="previous">Voltar</string>
 
-    <string name="sobre_text1">Base de dados de gym</string>
-    <string name="sobre_text2">João Teixeira</string>
+    <string name="sobre_app">
+    </string>
     <string name="sobre">Sobre</string>
-    <string name="personal">Personal</string>
     <string name="clientes">Clientes</string>
+    <string name="categorias">Categorias</string>
     <string name="pesquisa">Pesquisa</string>
-    <string name="editar">Editar</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="lista_clientes_label">Clientes</string>
     <string name="adicionar">Adicionar</string>
+    <string name="editar">Editar</string>
     <string name="eliminar">Eliminar</string>
-    <string name="p_de_laranja_lima">Pé de Laranja Lima</string>
-    <string name="literatura">Literatura</string>
-    <string name="hint">hint</string>
-    <string name="titulo">Titulo</string>
-    <string name="meu_p">Meu Pé</string>
+    <string name="novo_cliente_label">Novo cliente</string>
+    <string name="editar_cliente_label">Editar cliente</string>
+    <string name="titulo">Título</string>
     <string name="isbn">ISBN</string>
     <string name="categoria">Categoria</string>
-    <string name="_978_972">978-972</string>
-    <string name="data_publica_o">Data publicação</string>
-    <string name="_01_01_1968">01/01/1968</string>
-    <string name="literatura1">Literatura</string>
-    <string name="data_publicacao">Data Publicação</string>
-    <string name="editarCategoria">Categoria</string>
-    <string name="tituloEditra">Titulo</string>
-    <string name="isbnEditar">ISBN</string>
+    <string name="data_publicacao">Data publicação</string>
+    <string name="guardar">Guardar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="titulo_obrigatorio">Deve preencher o título</string>
+    <string name="data_invalida">Data inválida</string>
+    <string name="cliente_guardado_com_sucesso">Cliente guardado com sucesso</string>
+    <string name="erro_guardar_cliente">Não foi possível guardar o cliente</string>
+    <string name="eliminar_cliente_label">Eliminar cliente</string>
+    <string name="cliente_eliminado_com_sucesso">Cliente eliminado com sucesso</string>
+    <string name="erro_eliminar_cliente">Erro ao eliminar cliente</string>
 </resources>
