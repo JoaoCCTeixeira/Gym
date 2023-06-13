@@ -12,8 +12,8 @@ import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import pt.ipg.livros.databinding.FragmentListaLivrosBinding
 import pt.ipg.projecto.databinding.FragmentListaClientesBinding
+
 
 private const val ID_LOADER_CLIENTES = 0
 

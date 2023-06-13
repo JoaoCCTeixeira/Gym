@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textViewTitulo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -34,10 +34,10 @@
         android:textColor="#673AB7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitulo" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/textViewISBN"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         tools:text="978-972-8202-29-3"
@@ -53,10 +53,10 @@
         android:textColor="#673AB7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewISBN" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/textViewCategoria"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         tools:text="Literatura Infanto-juvenil"
@@ -72,10 +72,10 @@
         android:textColor="#673AB7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewCategoria" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/textViewDataPub"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         tools:text="01/01/1968"
