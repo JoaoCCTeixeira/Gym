@@ -275,15 +275,12 @@ class ClientesContentProvider : ContentProvider() {
 
     companion object {
         private const val AUTORIDADE = "pt.ipg.procjeto"
-
         private const val CATEGORIAS = "categorias"
         private const val CLIENTES = "clientes"
-
         private const val URI_CATEGORIAS = 100
         private const val URI_CATEGORIA_ID = 101
         private const val URI_CLIENTES = 200
         private const val URI_CLIENTE_ID = 201
-
         private val ENDERECO_BASE = Uri.parse("content://$AUTORIDADE")
 
         val ENDERECO_CATEGORIAS = Uri.withAppendedPath(ENDERECO_BASE, CATEGORIAS)

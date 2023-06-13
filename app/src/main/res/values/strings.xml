@@ -19,4 +19,16 @@
     <string name="p_de_laranja_lima">Pé de Laranja Lima</string>
     <string name="literatura">Literatura</string>
     <string name="hint">hint</string>
+    <string name="titulo">Titulo</string>
+    <string name="meu_p">Meu Pé</string>
+    <string name="isbn">ISBN</string>
+    <string name="categoria">Categoria</string>
+    <string name="_978_972">978-972</string>
+    <string name="data_publica_o">Data publicação</string>
+    <string name="_01_01_1968">01/01/1968</string>
+    <string name="literatura1">Literatura</string>
+    <string name="data_publicacao">Data Publicação</string>
+    <string name="editarCategoria">Categoria</string>
+    <string name="tituloEditra">Titulo</string>
+    <string name="isbnEditar">ISBN</string>
 </resources>

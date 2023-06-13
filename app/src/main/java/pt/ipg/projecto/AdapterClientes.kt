@@ -4,6 +4,7 @@ import android.database.Cursor
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 
@@ -29,7 +30,7 @@ class AdapterClientes(val fragment: ListaClientesFragment) : RecyclerView.Adapte
             set(value) {
                 field = value
                 textViewTitulo.text = cliente?.titulo ?: ""
-                textViewCategoria.text = cliente?.idCategoria.toString() ?: ""
+                textViewCategoria.text = cliente?.categoria?.descricao ?: ""
             }
         fun seleciona() {
             viewHolderSeleccionado = this

@@ -2,30 +2,24 @@ package pt.ipg.projecto
 
 import android.database.Cursor
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import pt.ipg.livros.databinding.FragmentListaLivrosBinding
 import pt.ipg.projecto.databinding.FragmentListaClientesBinding
 
 private const val ID_LOADER_CLIENTES = 0
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ListaLivrosFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-
 class ListaClientesFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     private var _binding: FragmentListaClientesBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     var clienteSelecionado : Cliente? = null
@@ -151,7 +145,9 @@ class ListaClientesFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
      * @param loader The Loader that is being reset.
      */
     override fun onLoaderReset(loader: Loader<Cursor>) {
-        adapterClientes!!.cursor = null
+        if (adapterClientes != null) {
+            adapterClientes!!.cursor = null
+        }
     }
 
     fun processaOpcaoMenu(item: MenuItem) : Boolean {
@@ -173,14 +169,17 @@ class ListaClientesFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
     }
 
     private fun eliminarLivro() {
-
+        val acao = ListaClientesFragmentDirections.actionListaClientesFragmentToEliminarClienteFragment(clienteSelecionado!!)
+        findNavController().navigate(acao)
     }
 
     private fun editarLivro() {
-
+        val acao = ListaLivrosFragmentDirections.actionListaClientesFragmentToEditarClienteFragment(clienteSelecionado!!)
+        findNavController().navigate(acao)
     }
 
     private fun adicionaLivro() {
-
+        val acao = ListaLivrosFragmentDirections.actionListaClientesFragmentToEditarClienteFragment(null)
+        findNavController().navigate(acao)
     }
 }

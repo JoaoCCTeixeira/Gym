@@ -16,7 +16,7 @@
             app:destination="@id/SobreFragment" />
         <action
             android:id="@+id/action_MenuPrincipalFragment_to_listaClientesFragment22"
-            app:destination="@id/listaClientesFragment2" />
+            app:destination="@id/ListaClientesFragment" />
     </fragment>
     <fragment
         android:id="@+id/SobreFragment"
@@ -29,7 +29,7 @@
             app:destination="@id/MenuPrincipalFragment" />
     </fragment>
     <fragment
-        android:id="@+id/listaClientesFragment2"
+        android:id="@+id/ListaClientesFragment"
         android:name="pt.ipg.projecto.ListaClientesFragment"
         android:label="ListaClientesFragment" >
         <action

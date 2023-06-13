@@ -3,6 +3,7 @@ package pt.ipg.projecto
 import android.content.ContentValues
 import android.database.Cursor
 import android.provider.BaseColumns
+import java.io.Serializable
 import java.util.Calendar
 
 data class Cliente (
@@ -11,7 +12,7 @@ data class Cliente (
     var isbn: String? = null,
     var dataPublicacao: Calendar? = null,
     var id: Long = -1
-) {
+) : Serializable {
 
     fun toContentValues(): ContentValues{
         val valores = ContentValues()
