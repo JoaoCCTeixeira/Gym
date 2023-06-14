@@ -64,10 +64,10 @@ class BdInstrumentedTest {
         val categoria = Categoria("humor")
         insereCategoria(bd, categoria)
 
-        val cliente1 = Cliente("O Lixo na Minha Cabeça",categoria.id)
+        val cliente1 = Cliente("O Lixo na Minha Cabeça", categoria)
         insereCliente(bd, cliente1)
 
-        val cliente2 =Cliente("Novíssimas crónicas da boca do inferno",categoria.id," 9789896711788")
+        val cliente2 =Cliente("Novíssimas crónicas da boca do inferno",categoria," 9789896711788")
         insereCliente(bd, cliente2)
     }
 
@@ -119,13 +119,13 @@ class BdInstrumentedTest {
         val categoria = Categoria("Contos")
         insereCategoria(bd, categoria)
 
-        val livro1 = Cliente("Todos os Contos", categoria.id)
+        val livro1 = Cliente("Todos os Contos", categoria)
         insereCliente(bd, livro1)
 
         val dataPub = Calendar.getInstance()
         dataPub.set(2016, 4, 1)
 
-        val livro2 = Cliente("Contos de Grimm", categoria.id, "978-1473683556", dataPub)
+        val livro2 = Cliente("Contos de Grimm", categoria, "978-1473683556", dataPub)
         insereCliente(bd, livro2)
 
         val tabelaLivros = TabelaClientes(bd)
@@ -182,13 +182,13 @@ class BdInstrumentedTest {
         val categoriaNacional = Categoria("Literatura nacional")
         insereCategoria(bd, categoriaNacional)
 
-        val livro = Cliente("...", categoriaNacional.id)
+        val livro = Cliente("...", categoriaNacional)
         insereCliente(bd, livro)
 
         val novaDataPub = Calendar.getInstance()
         novaDataPub.set(1968, 1, 1)
 
-        livro.idCategoria = categoriaJuvenil.id
+        livro.categoria = categoriaJuvenil
         livro.titulo = "Meu Pé de Laranja Lima"
         livro.dataPublicacao = novaDataPub
         livro.isbn = "978-972-8202-29-3"
@@ -224,7 +224,7 @@ class BdInstrumentedTest {
         val categoria = Categoria("Programação")
         insereCategoria(bd, categoria)
 
-        val livro = Cliente("...", categoria.id)
+        val livro = Cliente("...", categoria)
         insereCliente(bd, livro)
 
         val registosEliminados = TabelaClientes(bd).elimina(

@@ -153,32 +153,32 @@ class ListaClientesFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
     fun processaOpcaoMenu(item: MenuItem) : Boolean {
         return when (item.itemId) {
             R.id.action_adicionar -> {
-                adicionaLivro()
+                adicionaCliente()
                 true
             }
             R.id.action_editar -> {
-                editarLivro()
+                editarCliente()
                 true
             }
             R.id.action_eliminar -> {
-                eliminarLivro()
+                eliminarCliente()
                 true
             }
             else -> false
         }
     }
 
-    private fun eliminarLivro() {
+    private fun eliminarCliente() {
         val acao = ListaClientesFragmentDirections.actionListaClientesFragmentToEliminarClienteFragment(clienteSelecionado!!)
         findNavController().navigate(acao)
     }
 
-    private fun editarLivro() {
+    private fun editarCliente() {
         val acao = ListaLivrosFragmentDirections.actionListaClientesFragmentToEditarClienteFragment(clienteSelecionado!!)
         findNavController().navigate(acao)
     }
 
-    private fun adicionaLivro() {
+    private fun adicionaCliente() {
         val acao = ListaLivrosFragmentDirections.actionListaClientesFragmentToEditarClienteFragment(null)
         findNavController().navigate(acao)
     }
