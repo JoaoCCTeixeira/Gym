@@ -51,7 +51,7 @@ class EditarClienteFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
         activity.fragment = this
         activity.idMenuAtual = R.menu.menu_guardar_cancelar
 
-        /*val cliente = EditarClienteFragmentArgs.fromBundle(requireArguments()).cliente
+        val cliente = EditarClienteFragmentArgs.fromBundle(requireArguments()).cliente
 
         if (cliente != null) {
             activity.atualizaTitulo(R.string.editar_cliente_label)
@@ -64,7 +64,7 @@ class EditarClienteFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
             }
         } else {
             activity.atualizaTitulo(R.string.novo_cliente_label)
-        }*/
+        }
 
         this.cliente = cliente
     }
