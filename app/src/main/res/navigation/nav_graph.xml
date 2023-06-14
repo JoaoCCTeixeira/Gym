@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/MenuPrincipalFragment"
         android:name="pt.ipg.projecto.MenuPrincipalFragment"
-        android:label="@string/first_fragment_label"
+        android:label="@string/menu_principal_label"
         tools:layout="@layout/fragment_menu_principal">
 
         <action
@@ -21,7 +21,7 @@
     <fragment
         android:id="@+id/SobreFragment"
         android:name="pt.ipg.projecto.SobreFragment"
-        android:label="@string/second_fragment_label"
+        android:label="@string/sobre_fragment_label"
         tools:layout="@layout/fragment_sobre">
 
         <action

@@ -150,7 +150,7 @@ class ListaClientesFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
         }
     }
 
-    fun processaOpcaoMenu(item: MenuItem) : Boolean {
+    /*fun processaOpcaoMenu(item: MenuItem) : Boolean {
         return when (item.itemId) {
             R.id.action_adicionar -> {
                 adicionaCliente()
@@ -181,5 +181,5 @@ class ListaClientesFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
     private fun adicionaCliente() {
         val acao = ListaLivrosFragmentDirections.actionListaClientesFragmentToEditarClienteFragment(null)
         findNavController().navigate(acao)
-    }
+    }*/
 }

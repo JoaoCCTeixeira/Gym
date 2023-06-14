@@ -38,7 +38,7 @@ class EliminarClienteFragment : Fragment() {
         activity.fragment = this
         activity.idMenuAtual = R.menu.menu_eliminar
 
-        cliente = EliminarClienteFragmentArgs.fromBundle(requireArguments()).cliente
+        //cliente = EliminarClienteFragmentArgs.fromBundle(requireArguments()).cliente
 
         binding.textViewTitulo.text = cliente.titulo
         binding.textViewISBN.text = cliente.isbn
