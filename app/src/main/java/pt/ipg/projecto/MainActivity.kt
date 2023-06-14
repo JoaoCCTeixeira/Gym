@@ -61,6 +61,8 @@ class MainActivity : AppCompatActivity() {
 
         val opcaoProcessada = when (fragment) {
             is ListaClientesFragment -> (fragment as ListaClientesFragment).processaOpcaoMenu(item)
+            is EditarClienteFragment -> (fragment as EditarClienteFragment).processaOpcaoMenu(item)
+            is EliminarClienteFragment -> (fragment as EliminarClienteFragment).processaOpcaoMenu(item)
             else -> false
         }
 
@@ -76,4 +78,6 @@ class MainActivity : AppCompatActivity() {
     fun mostraOpcaoMenu(idOpcao: Int, mostrar: Boolean) {
         menu.findItem(idOpcao).setVisible(mostrar)
     }
+
+    fun atualizaTitulo(label: Int) = binding.toolbar.setTitle(label)
 }

@@ -35,5 +35,27 @@
         <action
             android:id="@+id/action_listaClientesFragment2_to_MenuPrincipalFragment"
             app:destination="@id/MenuPrincipalFragment" />
+        <action
+            android:id="@+id/action_ListaClientesFragment_to_eliminarClienteFragment"
+            app:destination="@id/eliminarClienteFragment" />
+        <action
+            android:id="@+id/action_ListaClientesFragment_to_editarClienteFragment"
+            app:destination="@id/editarClienteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editarClienteFragment"
+        android:name="pt.ipg.projecto.EditarClienteFragment"
+        android:label="EditarClienteFragment" >
+        <action
+            android:id="@+id/action_editarClienteFragment_to_ListaClientesFragment"
+            app:destination="@id/ListaClientesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eliminarClienteFragment"
+        android:name="pt.ipg.projecto.EliminarClienteFragment"
+        android:label="EliminarClienteFragment" >
+        <action
+            android:id="@+id/action_eliminarClienteFragment_to_ListaClientesFragment"
+            app:destination="@id/ListaClientesFragment" />
     </fragment>
 </navigation>
