@@ -58,8 +58,8 @@ class EditarClienteFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
 
             binding.editTextNome.setText(cliente.nome)
             binding.editTextIsbn.setText(cliente.cc)
-            if (cliente.dataPublicacao != null) {
-                dataPub = cliente.dataPublicacao
+            if (cliente.dataNascimento != null) {
+                dataPub = cliente.dataNascimento
                 binding.calendarViewDataPub.date = dataPub!!.timeInMillis
             }
         } else {
@@ -119,7 +119,7 @@ class EditarClienteFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
             cliente.nome = nome
             cliente.categoria = Categoria("?", categoriaId)
             cliente.cc = cc
-            cliente.dataPublicacao = dataPub
+            cliente.dataNascimento = dataPub
 
             alteraCliente(cliente)
         }

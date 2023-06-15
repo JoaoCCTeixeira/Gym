@@ -43,8 +43,8 @@ class EliminarClienteFragment : Fragment() {
         binding.textViewNome.text = cliente.nome
         binding.textViewCC.text = cliente.cc
         binding.textViewCategoria.text = cliente.categoria.descricao
-        if (cliente.dataPublicacao != null) {
-            binding.textViewDataPub.text = DateFormat.format("yyyy-MM-dd", cliente.dataPublicacao)
+        if (cliente.dataNascimento != null) {
+            binding.textViewDataNascimento.text = DateFormat.format("yyyy-MM-dd", cliente.dataNascimento)
         }
     }
 

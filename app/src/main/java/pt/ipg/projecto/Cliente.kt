@@ -10,7 +10,7 @@ data class Cliente (
     var nome: String,
     var categoria: Categoria,
     var cc: String? = null,
-    var dataPublicacao: Calendar? = null,
+    var dataNascimento: Calendar? = null,
     var id: Long = -1
 ) : Serializable {
 
@@ -19,7 +19,7 @@ data class Cliente (
 
         valores.put(TabelaClientes.CAMPO_NOME, nome)
         valores.put(TabelaClientes.CAMPO_CC, cc)
-        valores.put(TabelaClientes.CAMPO_DATA_PUB, dataPublicacao?.timeInMillis)
+        valores.put(TabelaClientes.CAMPO_DATA_NASCIMENTO, dataNascimento?.timeInMillis)
         valores.put(TabelaClientes.CAMPO_FK_CATEGORIA, categoria.id)
 
         return valores
@@ -29,7 +29,7 @@ data class Cliente (
             val posId = cursor.getColumnIndex(BaseColumns._ID)
             val posNome = cursor.getColumnIndex(TabelaClientes.CAMPO_NOME)
             val posCC = cursor.getColumnIndex(TabelaClientes.CAMPO_CC)
-            val posDataPub = cursor.getColumnIndex(TabelaClientes.CAMPO_DATA_PUB)
+            val posDataNascimento = cursor.getColumnIndex(TabelaClientes.CAMPO_DATA_NASCIMENTO)
             val posCategoriaFK = cursor.getColumnIndex(TabelaClientes.CAMPO_FK_CATEGORIA)
             val posDescCateg = cursor.getColumnIndex(TabelaClientes.CAMPO_DESC_CATEGORIA)
 
@@ -37,19 +37,19 @@ data class Cliente (
             val nome = cursor.getString(posNome)
             val cc = cursor.getString(posCC)
 
-            var dataPub: Calendar?
+            var dataNascimento: Calendar?
 
-            if (cursor.isNull(posDataPub)) {
-                dataPub = null
+            if (cursor.isNull(posDataNascimento)) {
+                dataNascimento = null
             } else {
-                dataPub = Calendar.getInstance()
-                dataPub.timeInMillis = cursor.getLong(posDataPub)
+                dataNascimento = Calendar.getInstance()
+                dataNascimento.timeInMillis = cursor.getLong(posDataNascimento)
             }
 
             val categoriaId = cursor.getLong(posCategoriaFK)
             val desricaoCategoria = cursor.getString(posDescCateg)
 
-            return Cliente(nome, Categoria(desricaoCategoria, categoriaId), cc, dataPub, id)
+            return Cliente(nome, Categoria(desricaoCategoria, categoriaId), cc, dataNascimento, id)
         }
     }
 }
