@@ -15,10 +15,10 @@
             android:layout_height="match_parent">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextNome"
+                android:id="@+id/editTextNomeC"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/nome"
+                android:hint="@string/nome_c"
                 android:textColorHint="#546E7A"
                 tools:ignore="VisualLintTextFieldSize" />
 
@@ -27,7 +27,7 @@
                 android:layout_height="match_parent">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextIsbn"
+                    android:id="@+id/editTextCC"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/cc" />
@@ -53,7 +53,7 @@
                     android:text="@string/data_nascimento" />
 
                 <CalendarView
-                    android:id="@+id/calendarViewDataPub"
+                    android:id="@+id/calendarViewDataNascimento"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />

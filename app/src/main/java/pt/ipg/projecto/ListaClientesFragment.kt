@@ -83,7 +83,7 @@ class ListaClientesFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
             ClientesContentProvider.ENDERECO_CLIENTES,
             TabelaClientes.CAMPOS,
             null, null,
-            TabelaClientes.CAMPO_NOME
+            TabelaClientes.CAMPO_NOMEC
         )
     }
 

@@ -23,13 +23,13 @@
     <string name="eliminar">Eliminar</string>
     <string name="novo_cliente_label">Novo cliente</string>
     <string name="editar_cliente_label">Editar cliente</string>
-    <string name="nome">Nome</string>
+    <string name="nome_c">Nome</string>
     <string name="cc">CC</string>
     <string name="categoria">Categoria</string>
     <string name="data_nascimento">Data nascimento</string>
     <string name="guardar">Guardar</string>
     <string name="cancelar">Cancelar</string>
-    <string name="titulo_obrigatorio">Deve preencher o título</string>
+    <string name="nomeC_obrigatorio">Deve preencher o nome</string>
     <string name="data_invalida">Data inválida</string>
     <string name="cliente_guardado_com_sucesso">Cliente guardado com sucesso</string>
     <string name="erro_guardar_cliente">Não foi possível guardar o cliente</string>

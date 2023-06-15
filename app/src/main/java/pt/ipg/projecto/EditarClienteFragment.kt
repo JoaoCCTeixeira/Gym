@@ -22,7 +22,7 @@ private const val ID_LOADER_CATEGORIAS = 0
 class EditarClienteFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     private var cliente: Cliente? = null
     private var _binding: FragmentEditarClienteBinding? = null
-    private var dataPub: Calendar? = null
+    private var dataNascimento: Calendar? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -39,9 +39,9 @@ class EditarClienteFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.calendarViewDataPub.setOnDateChangeListener { calendarView, year, month, dayOfMonth ->
-            if (dataPub == null) dataPub = Calendar.getInstance()
-            dataPub!!.set(year, month, dayOfMonth)
+        binding.calendarViewDataNascimento.setOnDateChangeListener { calendarView, year, month, dayOfMonth ->
+            if (dataNascimento == null) dataNascimento = Calendar.getInstance()
+            dataNascimento!!.set(year, month, dayOfMonth)
         }
 
         val loader = LoaderManager.getInstance(this)
@@ -56,11 +56,11 @@ class EditarClienteFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
         if (cliente != null) {
             activity.atualizaTitulo(R.string.editar_cliente_label)
 
-            binding.editTextNome.setText(cliente.nome)
-            binding.editTextIsbn.setText(cliente.cc)
+            binding.editTextNomeC.setText(cliente.nomeC)
+            binding.editTextCC.setText(cliente.cc)
             if (cliente.dataNascimento != null) {
-                dataPub = cliente.dataNascimento
-                binding.calendarViewDataPub.date = dataPub!!.timeInMillis
+                dataNascimento = cliente.dataNascimento
+                binding.calendarViewDataNascimento.date = dataNascimento!!.timeInMillis
             }
         } else {
             activity.atualizaTitulo(R.string.novo_cliente_label)
@@ -95,31 +95,31 @@ class EditarClienteFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
     }
 
     private fun guardar() {
-        val nome = binding.editTextNome.text.toString()
-        if (nome.isBlank()) {
-            binding.editTextNome.error = getString(R.string.titulo_obrigatorio)
-            binding.editTextNome.requestFocus()
+        val nomeC = binding.editTextNomeC.text.toString()
+        if (nomeC.isBlank()) {
+            binding.editTextNomeC.error = getString(R.string.nomeC_obrigatorio)
+            binding.editTextNomeC.requestFocus()
             return
         }
 
         val categoriaId = binding.spinnerCategorias.selectedItemId
-        val cc = binding.editTextIsbn.text.toString()
+        val cc = binding.editTextCC.text.toString()
 
         if (cliente == null) {
             val cliente = Cliente(
-                nome,
+                nomeC,
                 Categoria("?", categoriaId),
                 cc,
-                dataPub
+                dataNascimento
             )
 
             insereCliente(cliente)
         } else {
             val cliente = cliente!!
-            cliente.nome = nome
+            cliente.nomeC = nomeC
             cliente.categoria = Categoria("?", categoriaId)
             cliente.cc = cc
-            cliente.dataNascimento = dataPub
+            cliente.dataNascimento = dataNascimento
 
             alteraCliente(cliente)
         }
@@ -143,7 +143,7 @@ class EditarClienteFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
             ).show()
             voltaListaClientes()
         } else {
-            binding.editTextNome.error = getString(R.string.erro_guardar_cliente)
+            binding.editTextNomeC.error = getString(R.string.erro_guardar_cliente)
         }
     }
 
@@ -156,7 +156,7 @@ class EditarClienteFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
         )
 
         if (id == null) {
-            binding.editTextNome.error = getString(R.string.erro_guardar_cliente)
+            binding.editTextNomeC.error = getString(R.string.erro_guardar_cliente)
             return
         }
 

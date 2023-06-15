@@ -15,7 +15,7 @@ class AdapterClientes(val fragment: ListaClientesFragment) : RecyclerView.Adapte
         }
 
     inner class ViewHolderCliente(contentor: View) : ViewHolder(contentor) {
-        private val textViewTitulo = contentor.findViewById<TextView>(R.id.textViewNome)
+        private val textViewNomeC = contentor.findViewById<TextView>(R.id.textViewNomeC)
         private val textViewCategoria = contentor.findViewById<TextView>(R.id.textViewCategoria)
 
         init {
@@ -28,7 +28,7 @@ class AdapterClientes(val fragment: ListaClientesFragment) : RecyclerView.Adapte
         internal var cliente: Cliente? = null
             set(value) {
                 field = value
-                textViewTitulo.text = cliente?.nome ?: ""
+                textViewNomeC.text = cliente?.nomeC ?: ""
                 textViewCategoria.text = cliente?.categoria?.descricao ?: ""
             }
         fun seleciona() {

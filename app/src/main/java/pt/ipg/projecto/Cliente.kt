@@ -7,7 +7,7 @@ import java.io.Serializable
 import java.util.Calendar
 
 data class Cliente (
-    var nome: String,
+    var nomeC: String,
     var categoria: Categoria,
     var cc: String? = null,
     var dataNascimento: Calendar? = null,
@@ -17,7 +17,7 @@ data class Cliente (
     fun toContentValues(): ContentValues{
         val valores = ContentValues()
 
-        valores.put(TabelaClientes.CAMPO_NOME, nome)
+        valores.put(TabelaClientes.CAMPO_NOMEC, nomeC)
         valores.put(TabelaClientes.CAMPO_CC, cc)
         valores.put(TabelaClientes.CAMPO_DATA_NASCIMENTO, dataNascimento?.timeInMillis)
         valores.put(TabelaClientes.CAMPO_FK_CATEGORIA, categoria.id)
@@ -27,14 +27,14 @@ data class Cliente (
     companion object {
         fun fromCursor(cursor: Cursor): Cliente {
             val posId = cursor.getColumnIndex(BaseColumns._ID)
-            val posNome = cursor.getColumnIndex(TabelaClientes.CAMPO_NOME)
+            val posNomeC = cursor.getColumnIndex(TabelaClientes.CAMPO_NOMEC)
             val posCC = cursor.getColumnIndex(TabelaClientes.CAMPO_CC)
             val posDataNascimento = cursor.getColumnIndex(TabelaClientes.CAMPO_DATA_NASCIMENTO)
             val posCategoriaFK = cursor.getColumnIndex(TabelaClientes.CAMPO_FK_CATEGORIA)
             val posDescCateg = cursor.getColumnIndex(TabelaClientes.CAMPO_DESC_CATEGORIA)
 
             val id = cursor.getLong(posId)
-            val nome = cursor.getString(posNome)
+            val nomeC = cursor.getString(posNomeC)
             val cc = cursor.getString(posCC)
 
             var dataNascimento: Calendar?
@@ -49,7 +49,7 @@ data class Cliente (
             val categoriaId = cursor.getLong(posCategoriaFK)
             val desricaoCategoria = cursor.getString(posDescCateg)
 
-            return Cliente(nome, Categoria(desricaoCategoria, categoriaId), cc, dataNascimento, id)
+            return Cliente(nomeC, Categoria(desricaoCategoria, categoriaId), cc, dataNascimento, id)
         }
     }
 }

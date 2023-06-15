@@ -40,7 +40,7 @@ class EliminarClienteFragment : Fragment() {
 
         cliente = EliminarClienteFragmentArgs.fromBundle(requireArguments()).cliente
 
-        binding.textViewNome.text = cliente.nome
+        binding.textViewNomeC.text = cliente.nomeC
         binding.textViewCC.text = cliente.cc
         binding.textViewCategoria.text = cliente.categoria.descricao
         if (cliente.dataNascimento != null) {
@@ -79,7 +79,7 @@ class EliminarClienteFragment : Fragment() {
             Toast.makeText(requireContext(), getString(R.string.cliente_eliminado_com_sucesso), Toast.LENGTH_LONG).show()
             voltaListaClientes()
         } else {
-            Snackbar.make(binding.textViewNome, getString(R.string.erro_eliminar_cliente), Snackbar.LENGTH_INDEFINITE)
+            Snackbar.make(binding.textViewNomeC, getString(R.string.erro_eliminar_cliente), Snackbar.LENGTH_INDEFINITE)
         }
     }
 }
