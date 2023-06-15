@@ -174,12 +174,12 @@ class ListaClientesFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
     }
 
     private fun editarCliente() {
-        val acao = ListaLivrosFragmentDirections.actionListaClientesFragmentToEditarClienteFragment(clienteSelecionado!!)
+        val acao = ListaClientesFragmentDirections.actionListaClientesFragmentToEditarClienteFragment(clienteSelecionado!!)
         findNavController().navigate(acao)
     }
 
     private fun adicionaCliente() {
-        val acao = ListaLivrosFragmentDirections.actionListaClientesFragmentToEditarClienteFragment(null)
+        val acao = ListaClientesFragmentDirections.actionListaClientesFragmentToEditarClienteFragment(null)
         findNavController().navigate(acao)
     }
 }

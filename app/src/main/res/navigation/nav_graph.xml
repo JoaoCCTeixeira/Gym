@@ -62,8 +62,7 @@
             android:id="@+id/action_eliminarClienteFragment_to_ListaClientesFragment"
             app:destination="@id/ListaClientesFragment" />
         <argument
-            android:name="Cliente"
-            app:argType="pt.ipg.projecto.Cliente"
-            app:nullable="true" />
+            android:name="cliente"
+            app:argType="pt.ipg.projecto.Cliente" />
     </fragment>
 </navigation>
