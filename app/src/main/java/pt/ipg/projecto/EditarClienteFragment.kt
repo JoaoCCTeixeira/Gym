@@ -56,7 +56,7 @@ class EditarClienteFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
         if (cliente != null) {
             activity.atualizaTitulo(R.string.editar_cliente_label)
 
-            binding.editTextTitulo.setText(cliente.titulo)
+            binding.editTextNome.setText(cliente.nome)
             binding.editTextIsbn.setText(cliente.isbn)
             if (cliente.dataPublicacao != null) {
                 dataPub = cliente.dataPublicacao
@@ -95,10 +95,10 @@ class EditarClienteFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
     }
 
     private fun guardar() {
-        val titulo = binding.editTextTitulo.text.toString()
+        val titulo = binding.editTextNome.text.toString()
         if (titulo.isBlank()) {
-            binding.editTextTitulo.error = getString(R.string.titulo_obrigatorio)
-            binding.editTextTitulo.requestFocus()
+            binding.editTextNome.error = getString(R.string.titulo_obrigatorio)
+            binding.editTextNome.requestFocus()
             return
         }
 
@@ -116,7 +116,7 @@ class EditarClienteFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
             insereLivro(livro)
         } else {
             val cliente = cliente!!
-            cliente.titulo = titulo
+            cliente.nome = titulo
             cliente.categoria = Categoria("?", categoriaId)
             cliente.isbn = isbn
             cliente.dataPublicacao = dataPub
@@ -143,7 +143,7 @@ class EditarClienteFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
             ).show()
             voltaListaClientes()
         } else {
-            binding.editTextTitulo.error = getString(R.string.erro_guardar_cliente)
+            binding.editTextNome.error = getString(R.string.erro_guardar_cliente)
         }
     }
 
@@ -156,7 +156,7 @@ class EditarClienteFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
         )
 
         if (id == null) {
-            binding.editTextTitulo.error = getString(R.string.erro_guardar_cliente)
+            binding.editTextNome.error = getString(R.string.erro_guardar_cliente)
             return
         }
 

@@ -15,10 +15,10 @@
             android:layout_height="match_parent">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextTitulo"
+                android:id="@+id/editTextNome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/titulo"
+                android:hint="@string/nome"
                 android:textColorHint="#546E7A"
                 tools:ignore="VisualLintTextFieldSize" />
 

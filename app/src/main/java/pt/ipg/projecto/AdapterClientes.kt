@@ -29,7 +29,7 @@ class AdapterClientes(val fragment: ListaClientesFragment) : RecyclerView.Adapte
         internal var cliente: Cliente? = null
             set(value) {
                 field = value
-                textViewTitulo.text = cliente?.titulo ?: ""
+                textViewTitulo.text = cliente?.nome ?: ""
                 textViewCategoria.text = cliente?.categoria?.descricao ?: ""
             }
         fun seleciona() {

@@ -40,7 +40,7 @@ class EliminarClienteFragment : Fragment() {
 
         cliente = EliminarClienteFragmentArgs.fromBundle(requireArguments()).cliente
 
-        binding.textViewTitulo.text = cliente.titulo
+        binding.textViewTitulo.text = cliente.nome
         binding.textViewISBN.text = cliente.isbn
         binding.textViewCategoria.text = cliente.categoria.descricao
         if (cliente.dataPublicacao != null) {
