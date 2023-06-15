@@ -24,7 +24,7 @@
     <string name="novo_cliente_label">Novo cliente</string>
     <string name="editar_cliente_label">Editar cliente</string>
     <string name="nome">Nome</string>
-    <string name="isbn">ISBN</string>
+    <string name="cc">CC</string>
     <string name="categoria">Categoria</string>
     <string name="data_publicacao">Data publicação</string>
     <string name="guardar">Guardar</string>

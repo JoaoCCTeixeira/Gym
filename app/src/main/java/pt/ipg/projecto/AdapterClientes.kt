@@ -4,7 +4,6 @@ import android.database.Cursor
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 
@@ -16,7 +15,7 @@ class AdapterClientes(val fragment: ListaClientesFragment) : RecyclerView.Adapte
         }
 
     inner class ViewHolderCliente(contentor: View) : ViewHolder(contentor) {
-        private val textViewTitulo = contentor.findViewById<TextView>(R.id.textViewTitulo)
+        private val textViewTitulo = contentor.findViewById<TextView>(R.id.textViewNome)
         private val textViewCategoria = contentor.findViewById<TextView>(R.id.textViewCategoria)
 
         init {

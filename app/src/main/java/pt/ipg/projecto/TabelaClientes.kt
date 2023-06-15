@@ -7,7 +7,7 @@ import android.provider.BaseColumns
 
 class TabelaClientes(db: SQLiteDatabase): TabelaBD(db, NOME_TABELA){
     override fun cria() {
-        db.execSQL("CREATE TABLE $NOME_TABELA ($CHAVE_TABELA, $CAMPO_NOME TEXT NOT NULL, $CAMPO_ISBN TEXT, $CAMPO_FK_CATEGORIA INTEGER NOT NULL UNIQUE,    FOREIGN KEY($CAMPO_FK_CATEGORIA) REFERENCES ${TabelaCategorias.NOME_TABELA}(${BaseColumns._ID}) ON DELETE RESTRICT)")
+        db.execSQL("CREATE TABLE $NOME_TABELA ($CHAVE_TABELA, $CAMPO_NOME TEXT NOT NULL, $CAMPO_CC TEXT, $CAMPO_FK_CATEGORIA INTEGER NOT NULL UNIQUE,    FOREIGN KEY($CAMPO_FK_CATEGORIA) REFERENCES ${TabelaCategorias.NOME_TABELA}(${BaseColumns._ID}) ON DELETE RESTRICT)")
     }
 
     override fun consulta(
@@ -28,11 +28,11 @@ class TabelaClientes(db: SQLiteDatabase): TabelaBD(db, NOME_TABELA){
         const val NOME_TABELA = "Clientes"
 
         const val CAMPO_NOME = "nome"
-        const val CAMPO_ISBN = "isbn"
+        const val CAMPO_CC = "cc"
         const val CAMPO_DATA_PUB = "data_publicacao"
         const val CAMPO_FK_CATEGORIA = "id_categoria"
         const val CAMPO_DESC_CATEGORIA = TabelaCategorias.CAMPO_DESCRICAO
 
-        val CAMPOS = arrayOf(BaseColumns._ID, CAMPO_NOME, CAMPO_ISBN, CAMPO_DATA_PUB, CAMPO_FK_CATEGORIA, CAMPO_DESC_CATEGORIA)
+        val CAMPOS = arrayOf(BaseColumns._ID, CAMPO_NOME, CAMPO_CC, CAMPO_DATA_PUB, CAMPO_FK_CATEGORIA, CAMPO_DESC_CATEGORIA)
     }
 }

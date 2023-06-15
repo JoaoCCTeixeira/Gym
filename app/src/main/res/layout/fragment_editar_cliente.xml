@@ -30,7 +30,7 @@
                     android:id="@+id/editTextIsbn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/isbn" />
+                    android:hint="@string/cc" />
 
                 <TextView
                     android:id="@+id/textView13"

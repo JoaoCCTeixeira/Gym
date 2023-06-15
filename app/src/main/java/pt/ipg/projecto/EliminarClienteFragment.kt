@@ -40,8 +40,8 @@ class EliminarClienteFragment : Fragment() {
 
         cliente = EliminarClienteFragmentArgs.fromBundle(requireArguments()).cliente
 
-        binding.textViewTitulo.text = cliente.nome
-        binding.textViewISBN.text = cliente.isbn
+        binding.textViewNome.text = cliente.nome
+        binding.textViewCC.text = cliente.cc
         binding.textViewCategoria.text = cliente.categoria.descricao
         if (cliente.dataPublicacao != null) {
             binding.textViewDataPub.text = DateFormat.format("yyyy-MM-dd", cliente.dataPublicacao)
@@ -72,14 +72,14 @@ class EliminarClienteFragment : Fragment() {
     }
 
     private fun eliminar() {
-        val enderecoLivro = Uri.withAppendedPath(ClientesContentProvider.ENDERECO_CLIENTES, cliente.id.toString())
-        val numLivrosEliminados = requireActivity().contentResolver.delete(enderecoLivro, null, null)
+        val enderecoCliente = Uri.withAppendedPath(ClientesContentProvider.ENDERECO_CLIENTES, cliente.id.toString())
+        val numClientesEliminados = requireActivity().contentResolver.delete(enderecoCliente, null, null)
 
-        if (numLivrosEliminados == 1) {
+        if (numClientesEliminados == 1) {
             Toast.makeText(requireContext(), getString(R.string.cliente_eliminado_com_sucesso), Toast.LENGTH_LONG).show()
             voltaListaClientes()
         } else {
-            Snackbar.make(binding.textViewTitulo, getString(R.string.erro_eliminar_cliente), Snackbar.LENGTH_INDEFINITE)
+            Snackbar.make(binding.textViewNome, getString(R.string.erro_eliminar_cliente), Snackbar.LENGTH_INDEFINITE)
         }
     }
 }

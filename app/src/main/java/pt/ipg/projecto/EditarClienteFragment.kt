@@ -57,7 +57,7 @@ class EditarClienteFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
             activity.atualizaTitulo(R.string.editar_cliente_label)
 
             binding.editTextNome.setText(cliente.nome)
-            binding.editTextIsbn.setText(cliente.isbn)
+            binding.editTextIsbn.setText(cliente.cc)
             if (cliente.dataPublicacao != null) {
                 dataPub = cliente.dataPublicacao
                 binding.calendarViewDataPub.date = dataPub!!.timeInMillis
@@ -95,42 +95,42 @@ class EditarClienteFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
     }
 
     private fun guardar() {
-        val titulo = binding.editTextNome.text.toString()
-        if (titulo.isBlank()) {
+        val nome = binding.editTextNome.text.toString()
+        if (nome.isBlank()) {
             binding.editTextNome.error = getString(R.string.titulo_obrigatorio)
             binding.editTextNome.requestFocus()
             return
         }
 
         val categoriaId = binding.spinnerCategorias.selectedItemId
-        val isbn = binding.editTextIsbn.text.toString()
+        val cc = binding.editTextIsbn.text.toString()
 
         if (cliente == null) {
-            val livro = Cliente(
-                titulo,
+            val cliente = Cliente(
+                nome,
                 Categoria("?", categoriaId),
-                isbn,
+                cc,
                 dataPub
             )
 
-            insereLivro(livro)
+            insereCliente(cliente)
         } else {
             val cliente = cliente!!
-            cliente.nome = titulo
+            cliente.nome = nome
             cliente.categoria = Categoria("?", categoriaId)
-            cliente.isbn = isbn
+            cliente.cc = cc
             cliente.dataPublicacao = dataPub
 
             alteraCliente(cliente)
         }
     }
 
-    private fun alteraCliente(livro: Cliente) {
+    private fun alteraCliente(cliente: Cliente) {
         val enderecoCliente =
-            Uri.withAppendedPath(ClientesContentProvider.ENDERECO_CLIENTES, livro.id.toString())
+            Uri.withAppendedPath(ClientesContentProvider.ENDERECO_CLIENTES, cliente.id.toString())
         val ClientesAlterados = requireActivity().contentResolver.update(
             enderecoCliente,
-            livro.toContentValues(),
+            cliente.toContentValues(),
             null,
             null
         )
@@ -147,7 +147,7 @@ class EditarClienteFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
         }
     }
 
-    private fun insereLivro(
+    private fun insereCliente(
         cliente: Cliente
     ) {
         val id = requireActivity().contentResolver.insert(
