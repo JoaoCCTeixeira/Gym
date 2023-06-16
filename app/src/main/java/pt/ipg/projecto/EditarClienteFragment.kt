@@ -54,7 +54,7 @@ class EditarClienteFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
         val cliente = EditarClienteFragmentArgs.fromBundle(requireArguments()).cliente
 
         if (cliente != null) {
-            activity.atualizaTitulo(R.string.editar_cliente_label)
+            activity.atualizaNomeC(R.string.editar_cliente_label)
 
             binding.editTextNomeC.setText(cliente.nomeC)
             binding.editTextCC.setText(cliente.cc)
@@ -63,7 +63,7 @@ class EditarClienteFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
                 binding.calendarViewDataNascimento.date = dataNascimento!!.timeInMillis
             }
         } else {
-            activity.atualizaTitulo(R.string.novo_cliente_label)
+            activity.atualizaNomeC(R.string.novo_cliente_label)
         }
 
         this.cliente = cliente

@@ -31,7 +31,7 @@
     <fragment
         android:id="@+id/ListaClientesFragment"
         android:name="pt.ipg.projecto.ListaClientesFragment"
-        android:label="ListaClientesFragment" >
+        android:label="@string/lista_clientes_label">
         <action
             android:id="@+id/action_listaClientesFragment2_to_MenuPrincipalFragment"
             app:destination="@id/MenuPrincipalFragment" />
