@@ -185,7 +185,7 @@ class EditarClienteFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
             ClientesContentProvider.ENDERECO_CATEGORIAS,
             TabelaCategorias.CAMPOS,
             null, null,
-            TabelaCategorias.CAMPO_DESCRICAO
+            TabelaCategorias.CAMPO_NOMEP
         )
     }
 
@@ -258,7 +258,7 @@ class EditarClienteFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
             requireContext(),
             android.R.layout.simple_list_item_1,
             data,
-            arrayOf(TabelaCategorias.CAMPO_DESCRICAO),
+            arrayOf(TabelaCategorias.CAMPO_NOMEP),
             intArrayOf(android.R.id.text1),
             0
         )

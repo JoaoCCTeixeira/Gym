@@ -31,8 +31,8 @@ class TabelaClientes(db: SQLiteDatabase): TabelaBD(db, NOME_TABELA){
         const val CAMPO_CC = "cc"
         const val CAMPO_DATA_NASCIMENTO = "data_nascimento"
         const val CAMPO_FK_CATEGORIA = "id_categoria"
-        const val CAMPO_DESC_CATEGORIA = TabelaCategorias.CAMPO_DESCRICAO
+        const val CAMPO_NOMEP_CATEGORIA = TabelaCategorias.CAMPO_NOMEP
 
-        val CAMPOS = arrayOf(BaseColumns._ID, CAMPO_NOMEC, CAMPO_CC, CAMPO_DATA_NASCIMENTO, CAMPO_FK_CATEGORIA, CAMPO_DESC_CATEGORIA)
+        val CAMPOS = arrayOf(BaseColumns._ID, CAMPO_NOMEC, CAMPO_CC, CAMPO_DATA_NASCIMENTO, CAMPO_FK_CATEGORIA, CAMPO_NOMEP_CATEGORIA)
     }
 }

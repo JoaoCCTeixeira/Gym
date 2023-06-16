@@ -5,7 +5,7 @@ import android.database.Cursor
 import android.provider.BaseColumns
 
 data class Categoria (
-    var descricao: String,
+    var nomeP: String,
     var id: Long = -1
 
         ){
@@ -13,19 +13,19 @@ data class Categoria (
 fun toContentValues(): ContentValues{
     val valores = ContentValues()
 
-    valores.put(TabelaCategorias.CAMPO_DESCRICAO, descricao)
+    valores.put(TabelaCategorias.CAMPO_NOMEP, nomeP)
 
     return valores 
 }
     companion object {
         fun fromCursor(cursor: Cursor) : Categoria {
             val posId = cursor.getColumnIndex(BaseColumns._ID)
-            val posDescricao = cursor.getColumnIndex(TabelaCategorias.CAMPO_DESCRICAO)
+            val posNomeP = cursor.getColumnIndex(TabelaCategorias.CAMPO_NOMEP)
 
             val id = cursor.getLong(posId)
-            val descricao = cursor.getString(posDescricao)
+            val nomeP = cursor.getString(posNomeP)
 
-            return Categoria(descricao, id)
+            return Categoria(nomeP, id)
         }
     }
 }

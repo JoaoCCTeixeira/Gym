@@ -29,7 +29,7 @@ class AdapterClientes(val fragment: ListaClientesFragment) : RecyclerView.Adapte
             set(value) {
                 field = value
                 textViewNomeC.text = cliente?.nomeC ?: ""
-                textViewCategoria.text = cliente?.categoria?.descricao ?: ""
+                textViewCategoria.text = cliente?.categoria?.nomeP ?: ""
             }
         fun seleciona() {
             viewHolderSeleccionado = this

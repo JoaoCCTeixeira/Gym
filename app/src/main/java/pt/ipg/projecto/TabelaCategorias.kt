@@ -5,15 +5,15 @@ import android.provider.BaseColumns
 
 class TabelaCategorias(db: SQLiteDatabase) : TabelaBD(db, NOME_TABELA) {
     override fun cria() {
-        db.execSQL("CREATE TABLE $NOME_TABELA ($CHAVE_TABELA, $CAMPO_DESCRICAO TEXT NOT NULL)")
+        db.execSQL("CREATE TABLE $NOME_TABELA ($CHAVE_TABELA, $CAMPO_NOMEP TEXT NOT NULL)")
     }
 
     companion object{
         const val NOME_TABELA = "categorias"
 
         const val CAMPO_ID = "$NOME_TABELA.${BaseColumns._ID}"
-        const val CAMPO_DESCRICAO = "descricao"
+        const val CAMPO_NOMEP = "nome_p"
 
-        val CAMPOS = arrayOf(BaseColumns._ID, CAMPO_DESCRICAO)
+        val CAMPOS = arrayOf(BaseColumns._ID, CAMPO_NOMEP)
     }
 }
