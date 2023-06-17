@@ -42,32 +42,32 @@ class BdInstrumentedTest {
     }
 
     @Test
-    fun consegueInserirCategorias() {
+    fun consegueInserirPersonalTrainers() {
         val bd = getWritableDatabase()
 
-        val categoria = Categoria("Drama")
-        insereCategoria(bd, categoria)
+        val personalTrainer = PersonalTrainer("Drama")
+        inserePersonalTrainer(bd, personalTrainer)
     }
 
-    private fun insereCategoria(
+    private fun inserePersonalTrainer(
         bd: SQLiteDatabase,
-        categoria: Categoria
+        personalTrainer: PersonalTrainer
     ) {
-        categoria.id = TabelaCategorias(bd).inser(categoria.toContentValues())
-        assertNotEquals(-1, categoria.id)
+        personalTrainer.id = TabelaPersonalTrainers(bd).inser(personalTrainer.toContentValues())
+        assertNotEquals(-1, personalTrainer.id)
     }
 
 
     fun consegueInserirClientes(){
         val bd = getWritableDatabase()
 
-        val categoria = Categoria("humor")
-        insereCategoria(bd, categoria)
+        val personalTrainer = PersonalTrainer("humor")
+        inserePersonalTrainer(bd, personalTrainer)
 
-        val cliente1 = Cliente("O Lixo na Minha Cabeça", categoria)
+        val cliente1 = Cliente("O Lixo na Minha Cabeça", personalTrainer)
         insereCliente(bd, cliente1)
 
-        val cliente2 =Cliente("Novíssimas crónicas da boca do inferno",categoria," 9789896711788")
+        val cliente2 =Cliente("Novíssimas crónicas da boca do inferno",personalTrainer," 9789896711788")
         insereCliente(bd, cliente2)
     }
 
@@ -77,19 +77,19 @@ class BdInstrumentedTest {
     }
 
     @Test
-    fun consegueLerCategorias() {
+    fun consegueLerPersonalTrainers() {
         val bd = getWritableDatabase()
 
-        val categRomance = Categoria("Romance")
-        insereCategoria(bd, categRomance)
+        val categRomance = PersonalTrainer("Romance")
+        inserePersonalTrainer(bd, categRomance)
 
-        val categFiccao = Categoria("Ficção Científica")
-        insereCategoria(bd, categFiccao)
+        val categFiccao = PersonalTrainer("Ficção Científica")
+        inserePersonalTrainer(bd, categFiccao)
 
-        val tabelaCategorias = TabelaCategorias(bd)
+        val tabelaPersonalTrainers = TabelaPersonalTrainers(bd)
 
-        val cursor = tabelaCategorias.consulta(
-            TabelaCategorias.CAMPOS,
+        val cursor = tabelaPersonalTrainers.consulta(
+            TabelaPersonalTrainers.CAMPOS,
             "${BaseColumns._ID}=?",
             arrayOf(categFiccao.id.toString()),
             null,
@@ -99,41 +99,41 @@ class BdInstrumentedTest {
 
         assert(cursor.moveToNext())
 
-        val categBD = Categoria.fromCursor(cursor)
+        val categBD = PersonalTrainer.fromCursor(cursor)
 
         assertEquals(categFiccao, categBD)
 
-        val cursorTodasCategorias = tabelaCategorias.consulta(
-            TabelaCategorias.CAMPOS,
+        val cursorTodasPersonalTrainers = tabelaPersonalTrainers.consulta(
+            TabelaPersonalTrainers.CAMPOS,
             null, null, null, null,
-            TabelaCategorias.CAMPO_DESCRICAO
+            TabelaPersonalTrainers.CAMPO_NOMEP
         )
 
-        assert(cursorTodasCategorias.count > 1)
+        assert(cursorTodasPersonalTrainers.count > 1)
     }
 
     @Test
     fun consegueLerClientes() {
         val bd = getWritableDatabase()
 
-        val categoria = Categoria("Contos")
-        insereCategoria(bd, categoria)
+        val personalTrainer = PersonalTrainer("Contos")
+        inserePersonalTrainer(bd, personalTrainer)
 
-        val livro1 = Cliente("Todos os Contos", categoria)
-        insereCliente(bd, livro1)
+        val cliente1 = Cliente("Todos os Contos", personalTrainer)
+        insereCliente(bd, cliente1)
 
         val dataPub = Calendar.getInstance()
         dataPub.set(2016, 4, 1)
 
-        val livro2 = Cliente("Contos de Grimm", categoria, "978-1473683556", dataPub)
-        insereCliente(bd, livro2)
+        val cliente2 = Cliente("Contos de Grimm", personalTrainer, "978-1473683556", dataPub)
+        insereCliente(bd, cliente2)
 
-        val tabelaLivros = TabelaClientes(bd)
+        val tabelaClientes = TabelaClientes(bd)
 
-        val cursor = tabelaLivros.consulta(
+        val cursor = tabelaClientes.consulta(
             TabelaClientes.CAMPOS,
             "${BaseColumns._ID}=?",
-            arrayOf(livro1.id.toString()),
+            arrayOf(cliente1.id.toString()),
             null,
             null,
             null
@@ -141,95 +141,95 @@ class BdInstrumentedTest {
 
         assert(cursor.moveToNext())
 
-        val livroBD = Cliente.fromCursor(cursor)
+        val clienteBD = Cliente.fromCursor(cursor)
 
-        assertEquals(livro1, livroBD)
+        assertEquals(cliente1, clienteBD)
 
-        val cursorTodosLivros = tabelaLivros.consulta(
+        val cursorTodosClientes = tabelaClientes.consulta(
             TabelaClientes.CAMPOS,
             null, null, null, null,
-            TabelaClientes.CAMPO_TITULO
+            TabelaClientes.CAMPO_NOMEC
         )
 
-        assert(cursorTodosLivros.count > 1)
+        assert(cursorTodosClientes.count > 1)
     }
 
     @Test
-    fun consegueAlterarCategorias() {
+    fun consegueAlterarPersonalTrainers() {
         val bd = getWritableDatabase()
 
-        val categoria = Categoria("...")
-        insereCategoria(bd, categoria)
+        val personalTrainer = PersonalTrainer("...")
+        inserePersonalTrainer(bd, personalTrainer)
 
-        categoria.descricao = "Poesia"
+        personalTrainer.nomeP = "Poesia"
 
-        val registosAlterados = TabelaCategorias(bd).altera(
-            categoria.toContentValues(),
+        val registosAlterados = TabelaPersonalTrainers(bd).altera(
+            personalTrainer.toContentValues(),
             "${BaseColumns._ID}=?",
-            arrayOf(categoria.id.toString())
+            arrayOf(personalTrainer.id.toString())
         )
 
         assertEquals(1, registosAlterados)
     }
 
     @Test
-    fun consegueAlterarLivros() {
+    fun consegueAlterarClientes() {
         val bd = getWritableDatabase()
 
-        val categoriaJuvenil = Categoria("Literatura Infanto-juvenil")
-        insereCategoria(bd, categoriaJuvenil)
+        val categoriaJuvenil = PersonalTrainer("Literatura Infanto-juvenil")
+        inserePersonalTrainer(bd, categoriaJuvenil)
 
-        val categoriaNacional = Categoria("Literatura nacional")
-        insereCategoria(bd, categoriaNacional)
+        val categoriaNacional = PersonalTrainer("Literatura nacional")
+        inserePersonalTrainer(bd, categoriaNacional)
 
-        val livro = Cliente("...", categoriaNacional)
-        insereCliente(bd, livro)
+        val cliente = Cliente("...", categoriaNacional)
+        insereCliente(bd, cliente)
 
         val novaDataPub = Calendar.getInstance()
         novaDataPub.set(1968, 1, 1)
 
-        livro.categoria = categoriaJuvenil
-        livro.titulo = "Meu Pé de Laranja Lima"
-        livro.dataPublicacao = novaDataPub
-        livro.isbn = "978-972-8202-29-3"
+        cliente.personalTrainer = categoriaJuvenil
+        cliente.nomeC = "Meu Pé de Laranja Lima"
+        cliente.dataNascimento = novaDataPub
+        cliente.cc = "978-972-8202-29-3"
 
         val registosAlterados = TabelaClientes(bd).altera(
-            livro.toContentValues(),
+            cliente.toContentValues(),
             "${BaseColumns._ID}=?",
-            arrayOf(livro.id.toString())
+            arrayOf(cliente.id.toString())
         )
 
         assertEquals(1, registosAlterados)
     }
 
     @Test
-    fun consegueApagarCategorias() {
+    fun consegueApagarPersonalTrainers() {
         val bd = getWritableDatabase()
 
-        val categoria = Categoria("...")
-        insereCategoria(bd, categoria)
+        val personalTrainer = PersonalTrainer("...")
+        inserePersonalTrainer(bd, personalTrainer)
 
-        val registosEliminados = TabelaCategorias(bd).elimina(
+        val registosEliminados = TabelaPersonalTrainers(bd).elimina(
             "${BaseColumns._ID}=?",
-            arrayOf(categoria.id.toString())
+            arrayOf(personalTrainer.id.toString())
         )
 
         assertEquals(1, registosEliminados)
     }
 
     @Test
-    fun consegueApagarLivros() {
+    fun consegueApagarClientes() {
         val bd = getWritableDatabase()
 
-        val categoria = Categoria("Programação")
-        insereCategoria(bd, categoria)
+        val personalTrainer = PersonalTrainer("Programação")
+        inserePersonalTrainer(bd, personalTrainer)
 
-        val livro = Cliente("...", categoria)
-        insereCliente(bd, livro)
+        val cliente = Cliente("...", personalTrainer)
+        insereCliente(bd, cliente)
 
         val registosEliminados = TabelaClientes(bd).elimina(
             "${BaseColumns._ID}=?",
-            arrayOf(livro.id.toString())
+            arrayOf(cliente.id.toString())
         )
 
         assertEquals(1, registosEliminados)

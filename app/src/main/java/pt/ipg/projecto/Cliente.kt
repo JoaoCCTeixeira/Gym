@@ -8,7 +8,7 @@ import java.util.Calendar
 
 data class Cliente (
     var nomeC: String,
-    var categoria: Categoria,
+    var personalTrainer: PersonalTrainer,
     var cc: String? = null,
     var dataNascimento: Calendar? = null,
     var id: Long = -1
@@ -20,7 +20,7 @@ data class Cliente (
         valores.put(TabelaClientes.CAMPO_NOMEC, nomeC)
         valores.put(TabelaClientes.CAMPO_CC, cc)
         valores.put(TabelaClientes.CAMPO_DATA_NASCIMENTO, dataNascimento?.timeInMillis)
-        valores.put(TabelaClientes.CAMPO_FK_CATEGORIA, categoria.id)
+        valores.put(TabelaClientes.CAMPO_FK_PERSONALTRAINER, personalTrainer.id)
 
         return valores
     }
@@ -30,8 +30,8 @@ data class Cliente (
             val posNomeC = cursor.getColumnIndex(TabelaClientes.CAMPO_NOMEC)
             val posCC = cursor.getColumnIndex(TabelaClientes.CAMPO_CC)
             val posDataNascimento = cursor.getColumnIndex(TabelaClientes.CAMPO_DATA_NASCIMENTO)
-            val posCategoriaFK = cursor.getColumnIndex(TabelaClientes.CAMPO_FK_CATEGORIA)
-            val posNomePersonal = cursor.getColumnIndex(TabelaClientes.CAMPO_NOMEP_CATEGORIA)
+            val posPersonalTrainerFK = cursor.getColumnIndex(TabelaClientes.CAMPO_FK_PERSONALTRAINER)
+            val posNomePersonalTrainer = cursor.getColumnIndex(TabelaClientes.CAMPO_NOMEP_PERSONALTRAINER)
 
             val id = cursor.getLong(posId)
             val nomeC = cursor.getString(posNomeC)
@@ -46,10 +46,10 @@ data class Cliente (
                 dataNascimento.timeInMillis = cursor.getLong(posDataNascimento)
             }
 
-            val categoriaId = cursor.getLong(posCategoriaFK)
-            val nomePersonal = cursor.getString(posNomePersonal)
+            val personalTrainerId = cursor.getLong(posPersonalTrainerFK)
+            val nomePersonalTrainer = cursor.getString(posNomePersonalTrainer)
 
-            return Cliente(nomeC, Categoria(nomePersonal, categoriaId), cc, dataNascimento, id)
+            return Cliente(nomeC, PersonalTrainer(nomePersonalTrainer, personalTrainerId), cc, dataNascimento, id)
         }
     }
 }

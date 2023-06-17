@@ -16,7 +16,7 @@ class AdapterClientes(val fragment: ListaClientesFragment) : RecyclerView.Adapte
 
     inner class ViewHolderCliente(contentor: View) : ViewHolder(contentor) {
         private val textViewNomeC = contentor.findViewById<TextView>(R.id.textViewNomeC)
-        private val textViewCategoria = contentor.findViewById<TextView>(R.id.textViewCategoria)
+        private val textViewPersonalTrainer = contentor.findViewById<TextView>(R.id.textViewPersonalTrainer)
 
         init {
             contentor.setOnClickListener {
@@ -29,7 +29,7 @@ class AdapterClientes(val fragment: ListaClientesFragment) : RecyclerView.Adapte
             set(value) {
                 field = value
                 textViewNomeC.text = cliente?.nomeC ?: ""
-                textViewCategoria.text = cliente?.categoria?.nomeP ?: ""
+                textViewPersonalTrainer.text = cliente?.personalTrainer?.nomeP ?: ""
             }
         fun seleciona() {
             viewHolderSeleccionado = this

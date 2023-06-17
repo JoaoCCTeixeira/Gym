@@ -12,7 +12,7 @@
     </string>
     <string name="sobre">Sobre</string>
     <string name="clientes">Clientes</string>
-    <string name="categorias">Categorias</string>
+    <string name="personalTrainers">Personal Trainers</string>
     <string name="pesquisa">Pesquisa</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -24,7 +24,7 @@
     <string name="editar_cliente_label">Editar cliente</string>
     <string name="nome_c">Nome</string>
     <string name="cc">CC</string>
-    <string name="categoria">Categoria</string>
+    <string name="personalTrainer">Personal Trainer</string>
     <string name="data_nascimento">Data nascimento</string>
     <string name="guardar">Guardar</string>
     <string name="cancelar">Cancelar</string>

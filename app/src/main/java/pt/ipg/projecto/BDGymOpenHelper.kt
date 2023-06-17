@@ -17,7 +17,7 @@ class BDGymOpenHelper(
      */
     override fun onCreate(db: SQLiteDatabase?) {
         requireNotNull(db)
-        TabelaCategorias(db).cria()
+        TabelaPersonalTrainers(db).cria()
         TabelaClientes(db).cria()
     }
 

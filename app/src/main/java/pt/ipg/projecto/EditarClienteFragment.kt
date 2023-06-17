@@ -17,7 +17,7 @@ import androidx.navigation.fragment.findNavController
 import pt.ipg.projecto.databinding.FragmentEditarClienteBinding
 import java.util.Calendar
 
-private const val ID_LOADER_CATEGORIAS = 0
+private const val ID_LOADER_PERSONALTRAINERS = 0
 
 class EditarClienteFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     private var cliente: Cliente? = null
@@ -45,7 +45,7 @@ class EditarClienteFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
         }
 
         val loader = LoaderManager.getInstance(this)
-        loader.initLoader(ID_LOADER_CATEGORIAS, null, this)
+        loader.initLoader(ID_LOADER_PERSONALTRAINERS, null, this)
 
         val activity = activity as MainActivity
         activity.fragment = this
@@ -102,13 +102,13 @@ class EditarClienteFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
             return
         }
 
-        val categoriaId = binding.spinnerCategorias.selectedItemId
+        val personalTrainerId = binding.spinnerPersonalTrainers.selectedItemId
         val cc = binding.editTextCC.text.toString()
 
         if (cliente == null) {
             val cliente = Cliente(
                 nomeC,
-                Categoria("?", categoriaId),
+                PersonalTrainer("?", personalTrainerId),
                 cc,
                 dataNascimento
             )
@@ -117,7 +117,7 @@ class EditarClienteFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
         } else {
             val cliente = cliente!!
             cliente.nomeC = nomeC
-            cliente.categoria = Categoria("?", categoriaId)
+            cliente.personalTrainer = PersonalTrainer("?", personalTrainerId)
             cliente.cc = cc
             cliente.dataNascimento = dataNascimento
 
@@ -182,10 +182,10 @@ class EditarClienteFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
     override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
         return CursorLoader(
             requireContext(),
-            ClientesContentProvider.ENDERECO_CATEGORIAS,
-            TabelaCategorias.CAMPOS,
+            ClientesContentProvider.ENDERECO_PERSONALTRAINERS,
+            TabelaPersonalTrainers.CAMPOS,
             null, null,
-            TabelaCategorias.CAMPO_NOMEP
+            TabelaPersonalTrainers.CAMPO_NOMEP
         )
     }
 
@@ -201,7 +201,7 @@ class EditarClienteFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
      */
     override fun onLoaderReset(loader: Loader<Cursor>) {
         if (_binding != null) {
-            binding.spinnerCategorias.adapter = null
+            binding.spinnerPersonalTrainers.adapter = null
         }
     }
 
@@ -250,31 +250,31 @@ class EditarClienteFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
      */
     override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
         if (data == null) {
-            binding.spinnerCategorias.adapter = null
+            binding.spinnerPersonalTrainers.adapter = null
             return
         }
 
-        binding.spinnerCategorias.adapter = SimpleCursorAdapter(
+        binding.spinnerPersonalTrainers.adapter = SimpleCursorAdapter(
             requireContext(),
             android.R.layout.simple_list_item_1,
             data,
-            arrayOf(TabelaCategorias.CAMPO_NOMEP),
+            arrayOf(TabelaPersonalTrainers.CAMPO_NOMEP),
             intArrayOf(android.R.id.text1),
             0
         )
 
-        mostraCategoriaSelecionadaSpinner()
+        mostraPersonalTrainerSelecionadoSpinner()
     }
 
-    private fun mostraCategoriaSelecionadaSpinner() {
+    private fun mostraPersonalTrainerSelecionadoSpinner() {
         if (cliente == null) return
 
-        val idCategoria = cliente!!.categoria.id
+        val idPersonalTrainer = cliente!!.personalTrainer.id
 
-        val ultimaCategoria = binding.spinnerCategorias.count - 1
-        for (i in 0..ultimaCategoria) {
-            if (idCategoria == binding.spinnerCategorias.getItemIdAtPosition(i)) {
-                binding.spinnerCategorias.setSelection(i)
+        val ultimoPersonalTrainer = binding.spinnerPersonalTrainers.count - 1
+        for (i in 0..ultimoPersonalTrainer) {
+            if (idPersonalTrainer == binding.spinnerPersonalTrainers.getItemIdAtPosition(i)) {
+                binding.spinnerPersonalTrainers.setSelection(i)
                 return
             }
         }
