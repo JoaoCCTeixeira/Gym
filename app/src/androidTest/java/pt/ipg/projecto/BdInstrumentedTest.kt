@@ -45,7 +45,7 @@ class BdInstrumentedTest {
     fun consegueInserirPersonalTrainers() {
         val bd = getWritableDatabase()
 
-        val personalTrainer = PersonalTrainer("Drama")
+        val personalTrainer = PersonalTrainer("Nuno")
         inserePersonalTrainer(bd, personalTrainer)
     }
 
@@ -61,13 +61,13 @@ class BdInstrumentedTest {
     fun consegueInserirClientes(){
         val bd = getWritableDatabase()
 
-        val personalTrainer = PersonalTrainer("humor")
+        val personalTrainer = PersonalTrainer("Daniel")
         inserePersonalTrainer(bd, personalTrainer)
 
-        val cliente1 = Cliente("O Lixo na Minha Cabeça", personalTrainer)
+        val cliente1 = Cliente("Rodrigo", personalTrainer)
         insereCliente(bd, cliente1)
 
-        val cliente2 =Cliente("Novíssimas crónicas da boca do inferno",personalTrainer," 9789896711788")
+        val cliente2 =Cliente("Ana",personalTrainer,"15727882")
         insereCliente(bd, cliente2)
     }
 
@@ -80,18 +80,18 @@ class BdInstrumentedTest {
     fun consegueLerPersonalTrainers() {
         val bd = getWritableDatabase()
 
-        val categRomance = PersonalTrainer("Romance")
-        inserePersonalTrainer(bd, categRomance)
+        val ptJorge = PersonalTrainer("Jorge")
+        inserePersonalTrainer(bd, ptJorge)
 
-        val categFiccao = PersonalTrainer("Ficção Científica")
-        inserePersonalTrainer(bd, categFiccao)
+        val ptRonaldo = PersonalTrainer("Ronaldo")
+        inserePersonalTrainer(bd, ptRonaldo)
 
         val tabelaPersonalTrainers = TabelaPersonalTrainers(bd)
 
         val cursor = tabelaPersonalTrainers.consulta(
             TabelaPersonalTrainers.CAMPOS,
             "${BaseColumns._ID}=?",
-            arrayOf(categFiccao.id.toString()),
+            arrayOf(ptRonaldo.id.toString()),
             null,
             null,
             null
@@ -99,9 +99,9 @@ class BdInstrumentedTest {
 
         assert(cursor.moveToNext())
 
-        val categBD = PersonalTrainer.fromCursor(cursor)
+        val ptBD = PersonalTrainer.fromCursor(cursor)
 
-        assertEquals(categFiccao, categBD)
+        assertEquals(ptRonaldo, ptBD)
 
         val cursorTodasPersonalTrainers = tabelaPersonalTrainers.consulta(
             TabelaPersonalTrainers.CAMPOS,
@@ -116,16 +116,16 @@ class BdInstrumentedTest {
     fun consegueLerClientes() {
         val bd = getWritableDatabase()
 
-        val personalTrainer = PersonalTrainer("Contos")
+        val personalTrainer = PersonalTrainer("Hugo")
         inserePersonalTrainer(bd, personalTrainer)
 
-        val cliente1 = Cliente("Todos os Contos", personalTrainer)
+        val cliente1 = Cliente("Sofia", personalTrainer)
         insereCliente(bd, cliente1)
 
-        val dataPub = Calendar.getInstance()
-        dataPub.set(2016, 4, 1)
+        val dataNascimento = Calendar.getInstance()
+        dataNascimento.set(2016, 4, 1)
 
-        val cliente2 = Cliente("Contos de Grimm", personalTrainer, "978-1473683556", dataPub)
+        val cliente2 = Cliente("Joana", personalTrainer, "13780346", dataNascimento)
         insereCliente(bd, cliente2)
 
         val tabelaClientes = TabelaClientes(bd)
@@ -161,7 +161,7 @@ class BdInstrumentedTest {
         val personalTrainer = PersonalTrainer("...")
         inserePersonalTrainer(bd, personalTrainer)
 
-        personalTrainer.nomeP = "Poesia"
+        personalTrainer.nomeP = "Telmo"
 
         val registosAlterados = TabelaPersonalTrainers(bd).altera(
             personalTrainer.toContentValues(),
@@ -176,22 +176,22 @@ class BdInstrumentedTest {
     fun consegueAlterarClientes() {
         val bd = getWritableDatabase()
 
-        val categoriaJuvenil = PersonalTrainer("Literatura Infanto-juvenil")
-        inserePersonalTrainer(bd, categoriaJuvenil)
+        val personalTrainerGoncalo = PersonalTrainer("Gonçalo")
+        inserePersonalTrainer(bd, personalTrainerGoncalo)
 
-        val categoriaNacional = PersonalTrainer("Literatura nacional")
-        inserePersonalTrainer(bd, categoriaNacional)
+        val personalTrainerFilipa = PersonalTrainer("Filipa")
+        inserePersonalTrainer(bd, personalTrainerFilipa)
 
-        val cliente = Cliente("...", categoriaNacional)
+        val cliente = Cliente("...", personalTrainerFilipa)
         insereCliente(bd, cliente)
 
-        val novaDataPub = Calendar.getInstance()
-        novaDataPub.set(1968, 1, 1)
+        val novaDataNascimento = Calendar.getInstance()
+        novaDataNascimento.set(1968, 1, 1)
 
-        cliente.personalTrainer = categoriaJuvenil
-        cliente.nomeC = "Meu Pé de Laranja Lima"
-        cliente.dataNascimento = novaDataPub
-        cliente.cc = "978-972-8202-29-3"
+        cliente.personalTrainer = personalTrainerGoncalo
+        cliente.nomeC = "Rui"
+        cliente.dataNascimento = novaDataNascimento
+        cliente.cc = "46817093"
 
         val registosAlterados = TabelaClientes(bd).altera(
             cliente.toContentValues(),
@@ -221,7 +221,7 @@ class BdInstrumentedTest {
     fun consegueApagarClientes() {
         val bd = getWritableDatabase()
 
-        val personalTrainer = PersonalTrainer("Programação")
+        val personalTrainer = PersonalTrainer("Pedro")
         inserePersonalTrainer(bd, personalTrainer)
 
         val cliente = Cliente("...", personalTrainer)
