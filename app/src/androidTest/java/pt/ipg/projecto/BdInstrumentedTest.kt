@@ -26,7 +26,7 @@ class BdInstrumentedTest {
 
     @Before
     fun apagaBaseDados() {
-        getAppContext().deleteDatabase(BDGymOpenHelper.NOME_BASE_DADOS)
+        //getAppContext().deleteDatabase(BDGymOpenHelper.NOME_BASE_DADOS)
     }
 
     @Test
@@ -74,6 +74,7 @@ class BdInstrumentedTest {
     private fun insereCliente(bd: SQLiteDatabase, cliente: Cliente) {
         cliente.id = TabelaClientes(bd).inser(cliente.toContentValues())
         assertNotEquals(-1, cliente.id)
+
     }
 
     @Test
@@ -123,7 +124,7 @@ class BdInstrumentedTest {
         insereCliente(bd, cliente1)
 
         val dataNascimento = Calendar.getInstance()
-        dataNascimento.set(2016, 4, 1)
+        dataNascimento.set(2000, 4, 1)
 
         val cliente2 = Cliente("Joana", personalTrainer, "13780346", dataNascimento)
         insereCliente(bd, cliente2)
@@ -132,7 +133,7 @@ class BdInstrumentedTest {
 
         val cursor = tabelaClientes.consulta(
             TabelaClientes.CAMPOS,
-            "${BaseColumns._ID}=?",
+            "${TabelaClientes.CAMPO_ID}=?",
             arrayOf(cliente1.id.toString()),
             null,
             null,

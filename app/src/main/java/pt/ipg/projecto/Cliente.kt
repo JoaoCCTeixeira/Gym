@@ -13,7 +13,6 @@ data class Cliente (
     var dataNascimento: Calendar? = null,
     var id: Long = -1
 ) : Serializable {
-
     fun toContentValues(): ContentValues{
         val valores = ContentValues()
 
