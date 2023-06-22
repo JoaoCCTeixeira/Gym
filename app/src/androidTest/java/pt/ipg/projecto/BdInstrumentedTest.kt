@@ -49,10 +49,7 @@ class BdInstrumentedTest {
         inserePersonalTrainer(bd, personalTrainer)
     }
 
-    private fun inserePersonalTrainer(
-        bd: SQLiteDatabase,
-        personalTrainer: PersonalTrainer
-    ) {
+    private fun inserePersonalTrainer(bd: SQLiteDatabase, personalTrainer: PersonalTrainer) {
         personalTrainer.id = TabelaPersonalTrainers(bd).inser(personalTrainer.toContentValues())
         assertNotEquals(-1, personalTrainer.id)
     }

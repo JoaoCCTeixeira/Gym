@@ -6,7 +6,7 @@ import android.provider.BaseColumns
 import java.io.Serializable
 import java.util.Calendar
 
-data class Cliente (
+data class Cliente(
     var nomeC: String,
     var personalTrainer: PersonalTrainer,
     var cc: String? = null,
@@ -23,6 +23,7 @@ data class Cliente (
 
         return valores
     }
+
     companion object {
         fun fromCursor(cursor: Cursor): Cliente {
             val posId = cursor.getColumnIndex(BaseColumns._ID)
